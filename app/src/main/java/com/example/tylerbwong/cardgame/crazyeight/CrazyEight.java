@@ -1,12 +1,5 @@
 package com.example.tylerbwong.cardgame.crazyeight;
 
-/********************************************************************************
- * ** Group Members: Brittany Berlanga***Jonathan Tan***Brandon Vo***Tyler Wong***
- * ********************** Class: CPE 103 - Timothy Hawkins ***********************
- * **************************** Section: 09 6-9pm MWF ****************************
- * **************** File: Game.java Updated: 2014/11/2***************************
- ********************************************************************************/
-
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
 import com.example.tylerbwong.cardgame.components.Hand;

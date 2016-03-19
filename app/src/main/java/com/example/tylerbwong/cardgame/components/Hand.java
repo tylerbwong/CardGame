@@ -1,12 +1,5 @@
 package com.example.tylerbwong.cardgame.components;
 
-/********************************************************************************
- * ** Group Members: Brittany Berlanga***Jonathan Tan***Brandon Vo***Tyler Wong***
- * ********************** Class: CPE 103 - Timothy Hawkins ***********************
- * **************************** Section: 09 6-9pm MWF ****************************
- * ********************* File: Hand.java Updated: 2014/10/17**********************
- ********************************************************************************/
-
 import java.util.ArrayList;
 
 public class Hand {
