@@ -10,7 +10,7 @@ public class War {
    private Deck deck;
    private Hand userHand;
    private Hand computerHand;
-   private ArrayList<Card> prize = new ArrayList<Card>();
+   private ArrayList<Card> prize;
 
    // game constructor
    public War() {
@@ -25,6 +25,7 @@ public class War {
          userHand.draw(deck);
          computerHand.draw(deck);
       }
+      prize = new ArrayList<>();
    }
 
    /*

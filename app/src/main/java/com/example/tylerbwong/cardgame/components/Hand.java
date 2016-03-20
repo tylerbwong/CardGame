@@ -9,7 +9,7 @@ public class Hand {
 
    // default hand constructor
    public Hand() {
-      this.hand = new ArrayList<Card>();
+      this.hand = new ArrayList<>();
       this.num = 0;
    }
 
