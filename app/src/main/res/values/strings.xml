@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">CardGame</string>
+    <string name="app_name">CARDS</string>
+    <string name="crazy_eight">PLAY CRAZY EIGHTS</string>
+    <string name="war">PLAY WAR</string>
+    <string name="black_jack">PLAY BLACK JACK</string>
+    <string name="magic_trick">MAGIC TRICK</string>
+    <string name="exit">EXIT</string>
 </resources>
