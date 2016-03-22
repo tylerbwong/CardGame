@@ -12,6 +12,7 @@
     <string name="diamonds">DIAMONDS</string>
     <string name="clubs">CLUBS</string>
     <string name="submit">SUBMIT</string>
+    <string name="magic_result">WAS THIS YOUR CARD?</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>

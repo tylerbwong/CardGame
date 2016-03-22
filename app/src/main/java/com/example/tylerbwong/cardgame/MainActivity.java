@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(),"font/gotham-light.ttf");
+      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
       // initialize TextView
       titleLabel = (TextView) findViewById(R.id.title_label);
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
    /**
     * This method will start a game of
     * Crazy Eights.
+    *
     * @param v
     */
    public void crazyAction(View v) {
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
    /**
     * This method will start a game of
     * War.
+    *
     * @param v
     */
    public void warAction(View v) {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
    /**
     * This method will start a game of
     * Black Jack.
+    *
     * @param v
     */
    public void blackAction(View v) {
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
    /**
     * This method will start a Magic
     * Trick.
+    *
     * @param v
     */
    public void magicAction(View v) {
@@ -85,10 +89,26 @@ public class MainActivity extends AppCompatActivity {
    /**
     * This method will exit the
     * application.
+    *
     * @param v
     */
    public void exitAction(View v) {
       Process.killProcess(Process.myPid());
       System.exit(1);
+   }
+
+   @Override
+   public void onWindowFocusChanged(boolean hasFocus) {
+      super.onWindowFocusChanged(hasFocus);
+      View decorView = getWindow().getDecorView();
+      if (hasFocus) {
+         decorView.setSystemUiVisibility(
+               View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                     | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                     | View.SYSTEM_UI_FLAG_FULLSCREEN
+                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+      }
    }
 }

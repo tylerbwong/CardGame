@@ -15,6 +15,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MagicActivity"/>
+        <activity android:name=".MagicResultActivity"/>
     </application>
 
 </manifest>

@@ -68,7 +68,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
       submitButton = (Button) findViewById(R.id.submit);
       submitButton.setEnabled(false);
-      
+
       titleLabel.setTypeface(gotham);
       subtitleLabel1.setTypeface(gotham);
       subtitleLabel2.setTypeface(gotham);
@@ -143,6 +143,21 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
       if (suitCheck) {
          submitButton.setEnabled(true);
+      }
+   }
+
+   @Override
+   public void onWindowFocusChanged(boolean hasFocus) {
+      super.onWindowFocusChanged(hasFocus);
+      View decorView = getWindow().getDecorView();
+      if (hasFocus) {
+         decorView.setSystemUiVisibility(
+               View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                     | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                     | View.SYSTEM_UI_FLAG_FULLSCREEN
+                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
       }
    }
 }
