@@ -76,12 +76,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:onClick="submitButtonEnabled"
                 android:drawableRight="@mipmap/spade"/>
 
             <RadioButton
                 android:id="@+id/heart_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="submitButtonEnabled"
                 android:drawableRight="@mipmap/heart"/>
 
             <RadioButton
@@ -89,12 +91,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:onClick="submitButtonEnabled"
                 android:drawableRight="@mipmap/club"/>
 
             <RadioButton
                 android:id="@+id/diamond_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="submitButtonEnabled"
                 android:drawableRight="@mipmap/diamond"/>
         </RadioGroup>
     </LinearLayout>

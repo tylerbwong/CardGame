@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,12 +22,27 @@ import java.util.List;
  * Created by tylerbwong on 3/21/16.
  */
 public class MagicActivity extends AppCompatActivity implements OnItemSelectedListener {
+   final static int ACE = 1;
+   final static int JACK = 11;
+   final static int QUEEN = 12;
+   final static int KING = 13;
+   final static int SPADE = 0;
+   final static int HEART = 1;
+   final static int CLUB = 2;
+   final static int DIAMOND = 3;
+
    private TextView titleLabel;
    private TextView subtitleLabel1;
    private TextView subtitleLabel2;
    private Spinner spinner;
    private Button submitButton;
-   private String selection;
+   private RadioButton spadeButton;
+   private RadioButton heartButton;
+   private RadioButton clubButton;
+   private RadioButton diamondButton;
+   private String rank;
+   private int suitChoice;
+   private ArrayList<RadioButton> suits;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +50,25 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       setContentView(R.layout.activity_magic);
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      suits = new ArrayList<>();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       subtitleLabel1 = (TextView) findViewById(R.id.subtitle_label1);
       subtitleLabel2 = (TextView) findViewById(R.id.subtitle_label2);
       spinner = (Spinner) findViewById(R.id.spinner);
-      submitButton = (Button) findViewById(R.id.submit);
+      spadeButton = (RadioButton) findViewById(R.id.spade_button);
+      heartButton = (RadioButton) findViewById(R.id.heart_button);
+      clubButton = (RadioButton) findViewById(R.id.club_button);
+      diamondButton = (RadioButton) findViewById(R.id.diamond_button);
 
+      suits.add(spadeButton);
+      suits.add(heartButton);
+      suits.add(clubButton);
+      suits.add(diamondButton);
+
+      submitButton = (Button) findViewById(R.id.submit);
+      submitButton.setEnabled(false);
+      
       titleLabel.setTypeface(gotham);
       subtitleLabel1.setTypeface(gotham);
       subtitleLabel2.setTypeface(gotham);
@@ -87,7 +116,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
                               int pos, long id) {
       // An item was selected. You can retrieve the selected item using
       // parent.getItemAtPosition(pos)
-      selection = (String) parent.getItemAtPosition(pos);
+      rank = (String) parent.getItemAtPosition(pos);
    }
 
    @Override
@@ -96,6 +125,24 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
    }
 
    public void submitAction(View v) {
+      // Intent submitIntent = new Intent(this, MagicResultActivity.class);
+      // submitIntent.putExtra("suit", suitChoice);
+      // submitIntent.putExtra("rank", selection);
+      // startActivity(submitIntent);
+   }
 
+   public void submitButtonEnabled(View view) {
+      boolean suitCheck = false;
+
+      for (RadioButton suit : suits) {
+         if (suit.isChecked()) {
+            suitCheck = true;
+            suitChoice = suits.indexOf(suit);
+         }
+      }
+
+      if (suitCheck) {
+         submitButton.setEnabled(true);
+      }
    }
 }
