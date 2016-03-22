@@ -5,4 +5,5 @@
     <string name="black_jack">PLAY BLACK JACK</string>
     <string name="magic_trick">MAGIC TRICK</string>
     <string name="exit">EXIT</string>
+    <string name="prompt">CHOOSE A SUIT</string>
 </resources>

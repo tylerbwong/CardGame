@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:paddingTop="150dp">
+
+
+        <TextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/magic_trick"
+            android:textColor="@color/colorAccent"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:id="@+id/subtitle_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/prompt"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:paddingTop="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:paddingTop="300dp">
+
+        <Button
+            android:id="@+id/spade_button"
+            android:layout_width="109dp"
+            android:layout_height="96dp"
+            android:background="@drawable/icon"
+            android:layout_marginRight="20dp"/>
+        <Button
+            android:id="@+id/heart_button"
+            android:layout_width="105dp"
+            android:layout_height="96dp"
+            android:background="@drawable/heart"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:paddingTop="450dp">
+
+        <Button
+            android:id="@+id/club_button"
+            android:layout_width="106dp"
+            android:layout_height="109dp"
+            android:background="@drawable/club"
+            android:layout_marginRight="20dp"/>
+        <Button
+            android:id="@+id/diamond_button"
+            android:layout_width="106dp"
+            android:layout_height="109dp"
+            android:background="@drawable/diamond"/>
+    </LinearLayout>
+</RelativeLayout>
