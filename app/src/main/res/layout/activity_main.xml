@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:paddingTop="40dp">
+        android:paddingTop="100dp">
 
 
         <TextView
@@ -23,11 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
+            android:textColor="@color/colorAccent"
             android:text="@string/app_name"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="114dp"
+            android:layout_height="108dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/icon"
             android:layout_marginTop="75dp"/>
@@ -39,47 +40,56 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:paddingTop="225dp">
+        android:paddingTop="250dp">
 
         <Button
             android:id="@+id/crazy_eight"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:onClick="crazyAction"
             android:text="@string/crazy_eight"
-            android:background="@color/white"
-            android:textSize="12dp"/>
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/button_shape"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp"/>
         <Button
             android:id="@+id/war"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:onClick="warAction"
             android:text="@string/war"
-            android:background="@color/white"
-            android:textSize="12dp"/>
+            android:background="@drawable/button_shape"
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginBottom="10dp"/>
         <Button
             android:id="@+id/black_jack"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:onClick="blackAction"
             android:text="@string/black_jack"
-            android:background="@color/white"
-            android:textSize="12dp"/>
+            android:background="@drawable/button_shape"
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginBottom="10dp"/>
         <Button
             android:id="@+id/magic_trick"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:onClick="magicAction"
             android:text="@string/magic_trick"
-            android:background="@color/white"
-            android:textSize="12dp"/>
+            android:background="@drawable/button_shape"
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginBottom="10dp"/>
         <Button
             android:id="@+id/exit"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:onClick="exitAction"
             android:text="@string/exit"
-            android:background="@color/white"
-            android:textSize="12dp"/>
+            android:background="@drawable/button_shape"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"/>
     </LinearLayout>
 </RelativeLayout>
