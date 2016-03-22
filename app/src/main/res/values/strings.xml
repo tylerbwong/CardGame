@@ -5,5 +5,26 @@
     <string name="black_jack">PLAY BLACK JACK</string>
     <string name="magic_trick">MAGIC TRICK</string>
     <string name="exit">EXIT</string>
-    <string name="prompt">CHOOSE A SUIT</string>
+    <string name="prompt1">CHOOSE A SUIT</string>
+    <string name="prompt2">CHOOSE A CARD VALUE</string>
+    <string name="spades">SPADES</string>
+    <string name="hearts">HEARTS</string>
+    <string name="diamonds">DIAMONDS</string>
+    <string name="clubs">CLUBS</string>
+    <string name="submit">SUBMIT</string>
+    <string-array name="value_array">
+        <item>Ace</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>Jack</item>
+        <item>Queen</item>
+        <item>King</item>
+    </string-array>
 </resources>

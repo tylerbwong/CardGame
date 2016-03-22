@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:paddingTop="150dp">
+        android:paddingTop="100dp">
 
 
         <TextView
@@ -22,54 +22,80 @@
             android:textSize="50sp"/>
 
         <TextView
-            android:id="@+id/subtitle_label"
+            android:id="@+id/subtitle_label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/prompt"
+            android:paddingTop="10dp"
+            android:text="@string/prompt1"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:paddingTop="10dp"/>
+            android:textSize="20sp"/>
 
+        <TextView
+            android:id="@+id/subtitle_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="255dp"
+            android:text="@string/prompt2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="submitAction"
+            android:text="@string/submit"
+            android:textColor="@color/colorAccent"
+            android:background="@color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="40dp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:orientation="horizontal"
-        android:paddingTop="300dp">
+        android:paddingBottom="50dp">
 
-        <Button
-            android:id="@+id/spade_button"
-            android:layout_width="109dp"
-            android:layout_height="96dp"
-            android:background="@drawable/icon"
-            android:layout_marginRight="20dp"/>
-        <Button
-            android:id="@+id/heart_button"
-            android:layout_width="105dp"
-            android:layout_height="96dp"
-            android:background="@drawable/heart"/>
-    </LinearLayout>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:paddingTop="450dp">
+            <RadioButton
+                android:id="@+id/spade_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:drawableRight="@mipmap/spade"/>
 
-        <Button
-            android:id="@+id/club_button"
-            android:layout_width="106dp"
-            android:layout_height="109dp"
-            android:background="@drawable/club"
-            android:layout_marginRight="20dp"/>
-        <Button
-            android:id="@+id/diamond_button"
-            android:layout_width="106dp"
-            android:layout_height="109dp"
-            android:background="@drawable/diamond"/>
+            <RadioButton
+                android:id="@+id/heart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/heart"/>
+
+            <RadioButton
+                android:id="@+id/club_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:drawableRight="@mipmap/club"/>
+
+            <RadioButton
+                android:id="@+id/diamond_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/diamond"/>
+        </RadioGroup>
     </LinearLayout>
 </RelativeLayout>

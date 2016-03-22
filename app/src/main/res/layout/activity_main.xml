@@ -30,7 +30,7 @@
             android:layout_width="114dp"
             android:layout_height="108dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/icon"
+            android:src="@mipmap/spade"
             android:layout_marginTop="75dp"/>
 
     </RelativeLayout>
@@ -49,7 +49,7 @@
             android:onClick="crazyAction"
             android:text="@string/crazy_eight"
             android:textColor="@color/colorAccent"
-            android:background="@drawable/button_shape"
+            android:background="@color/white"
             android:textSize="14sp"
             android:layout_marginBottom="10dp"/>
         <Button
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:onClick="warAction"
             android:text="@string/war"
-            android:background="@drawable/button_shape"
+            android:background="@color/white"
             android:textSize="14sp"
             android:textColor="@color/colorAccent"
             android:layout_marginBottom="10dp"/>
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:onClick="blackAction"
             android:text="@string/black_jack"
-            android:background="@drawable/button_shape"
+            android:background="@color/white"
             android:textSize="14sp"
             android:textColor="@color/colorAccent"
             android:layout_marginBottom="10dp"/>
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:onClick="magicAction"
             android:text="@string/magic_trick"
-            android:background="@drawable/button_shape"
+            android:background="@color/white"
             android:textSize="14sp"
             android:textColor="@color/colorAccent"
             android:layout_marginBottom="10dp"/>
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:onClick="exitAction"
             android:text="@string/exit"
-            android:background="@drawable/button_shape"
+            android:background="@color/white"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"/>
     </LinearLayout>
