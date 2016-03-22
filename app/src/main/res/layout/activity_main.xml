@@ -1,100 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:theme="@style/NoActionBar"
-                tools:context="com.example.tylerbwong.cardgame.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin"
+    tools:context="com.example.tylerbwong.cardgame.MainActivity">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:paddingTop="100dp">
+        android:text="@string/app_name"
+        android:textColor="@color/colorAccent"
+        android:textSize="50sp" />
 
+    <ImageView
+        android:layout_width="114dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/icon" />
 
-        <TextView
-            android:id="@+id/title_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textColor="@color/colorAccent"
-            android:text="@string/app_name"/>
-
-        <ImageView
-            android:layout_width="114dp"
-            android:layout_height="108dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/icon"
-            android:layout_marginTop="75dp"/>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/crazy_eight"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:paddingTop="250dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:onClick="crazyAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/crazy_eight"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/crazy_eight"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:onClick="crazyAction"
-            android:text="@string/crazy_eight"
-            android:textColor="@color/colorAccent"
-            android:background="@color/white"
-            android:textSize="14sp"
-            android:stateListAnimator="@anim/button_animator"
-            android:layout_marginBottom="10dp"/>
-        <Button
-            android:id="@+id/war"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:onClick="warAction"
-            android:text="@string/war"
-            android:background="@color/white"
-            android:textSize="14sp"
-            android:textColor="@color/colorAccent"
-            android:stateListAnimator="@anim/button_animator"
-            android:layout_marginBottom="10dp"/>
-        <Button
-            android:id="@+id/black_jack"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:onClick="blackAction"
-            android:text="@string/black_jack"
-            android:background="@color/white"
-            android:textSize="14sp"
-            android:textColor="@color/colorAccent"
-            android:stateListAnimator="@anim/button_animator"
-            android:layout_marginBottom="10dp"/>
-        <Button
-            android:id="@+id/magic_trick"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:onClick="magicAction"
-            android:text="@string/magic_trick"
-            android:background="@color/white"
-            android:textSize="14sp"
-            android:textColor="@color/colorAccent"
-            android:stateListAnimator="@anim/button_animator"
-            android:layout_marginBottom="10dp"/>
-        <Button
-            android:id="@+id/exit"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:onClick="exitAction"
-            android:text="@string/exit"
-            android:background="@color/white"
-            android:textColor="@color/colorAccent"
-            android:stateListAnimator="@anim/button_animator"
-            android:textSize="14sp"/>
-    </LinearLayout>
-</RelativeLayout>
+    <Button
+        android:id="@+id/war"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:onClick="warAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/war"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/black_jack"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:onClick="blackAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/black_jack"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/magic_trick"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:onClick="magicAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/magic_trick"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="exitAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/exit"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+</LinearLayout>
