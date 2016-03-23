@@ -1,104 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:paddingTop="100dp">
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:text="@string/magic_trick"
+        android:textColor="@color/colorAccent"
+        android:textSize="45sp" />
 
-
-        <TextView
-            android:id="@+id/title_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/magic_trick"
-            android:textColor="@color/colorAccent"
-            android:textSize="50sp"/>
-
-        <TextView
-            android:id="@+id/subtitle_label1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingTop="10dp"
-            android:text="@string/prompt1"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/subtitle_label2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingTop="255dp"
-            android:text="@string/prompt2"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"/>
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="submitAction"
-            android:text="@string/submit"
-            android:textColor="@color/colorAccent"
-            android:background="@color/white"
-            android:stateListAnimator="@anim/button_animator"
-            android:textSize="14sp"
-            android:layout_marginTop="40dp"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/subtitle_label1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal"
-        android:paddingBottom="50dp">
+        android:layout_gravity="center"
+        android:text="@string/prompt1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
 
-        <RadioGroup
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/spade_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/spade"
+            android:onClick="submitButtonEnabled" />
 
-            <RadioButton
-                android:id="@+id/spade_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="submitButtonEnabled"
-                android:drawableEnd="@mipmap/spade"/>
+        <RadioButton
+            android:id="@+id/heart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/heart"
+            android:onClick="submitButtonEnabled" />
 
-            <RadioButton
-                android:id="@+id/heart_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="submitButtonEnabled"
-                android:drawableEnd="@mipmap/heart"/>
+        <RadioButton
+            android:id="@+id/club_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/club"
+            android:onClick="submitButtonEnabled" />
 
-            <RadioButton
-                android:id="@+id/club_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="submitButtonEnabled"
-                android:drawableEnd="@mipmap/club"/>
+        <RadioButton
+            android:id="@+id/diamond_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/diamond"
+            android:onClick="submitButtonEnabled" />
+    </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/diamond_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="submitButtonEnabled"
-                android:drawableEnd="@mipmap/diamond"/>
-        </RadioGroup>
-    </LinearLayout>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/subtitle_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/prompt2"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:background="@color/white"
+        android:onClick="submitAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/submit"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+</LinearLayout>
