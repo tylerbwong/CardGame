@@ -8,15 +8,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:label="Cards">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".MagicActivity"/>
-        <activity android:name=".MagicResultActivity"/>
+        <activity android:name=".MainActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".MagicActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".MagicResultActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
