@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
+      setFullscreen();
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
@@ -110,14 +111,6 @@ public class MainActivity extends AppCompatActivity {
       intent.addCategory(Intent.CATEGORY_HOME);
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
-   }
-
-   @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus) {
-         setFullscreen();
-      }
    }
 
    private void setFullscreen() {

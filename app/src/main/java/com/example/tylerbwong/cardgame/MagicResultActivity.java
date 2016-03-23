@@ -31,6 +31,7 @@ public class MagicResultActivity extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_magic_result);
+      setFullscreen();
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
@@ -96,14 +97,6 @@ public class MagicResultActivity extends AppCompatActivity {
    public void againAction(View v) {
       Intent againIntent = new Intent(this, MagicActivity.class);
       startActivity(againIntent);
-   }
-
-   @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus) {
-         setFullscreen();
-      }
    }
 
    private void setFullscreen() {

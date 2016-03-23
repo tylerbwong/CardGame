@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
 
       setContentView(R.layout.splash_activity);
+      setFullscreen();
       TextView title = (TextView) findViewById(R.id.title_label);
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
       title.setTypeface(gotham);
@@ -32,14 +33,6 @@ public class SplashActivity extends AppCompatActivity {
             SplashActivity.this.finish();
          }
       }, SPLASH_DISPLAY_LENGTH);
-   }
-
-   @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus) {
-         setFullscreen();
-      }
    }
 
    private void setFullscreen() {

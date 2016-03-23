@@ -1,8 +1,9 @@
 package com.example.tylerbwong.cardgame.components;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Hand {
+public class Hand implements Serializable {
    // array of cards
    private int num;
    private ArrayList<Card> hand;

@@ -1,6 +1,8 @@
 package com.example.tylerbwong.cardgame.components;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
    private int num;
    private String suit;
    final static String JACK = "Jack";

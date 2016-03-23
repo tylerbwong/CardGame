@@ -21,6 +21,10 @@
     <string name="real_magic_trick">REAL MAGIC TRICK</string>
     <string name="ace_spades">Ace of Spades</string>
     <string name="remember">Remember one of the cards below!</string>
+    <string name="number_enter">Enter a number 1-26</string>
+    <string name="favorite_number_1">WHAT IS YOUR</string>
+    <string name="favorite_number_2">FAVORITE NUMBER?</string>
+    <string name="invalid">Invalid input</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>

@@ -3,12 +3,13 @@ package com.example.tylerbwong.cardgame.magictrick;
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by tylerbwong on 3/22/16.
  */
-public class MagicTrick {
+public class MagicTrick implements Serializable {
    private Deck deck;
    private Card solution;
    private int choice;

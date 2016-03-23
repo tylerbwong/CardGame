@@ -1,8 +1,9 @@
 package com.example.tylerbwong.cardgame.components;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Deck extends LQueue<Card> {
+public class Deck extends LQueue<Card> implements Serializable {
 
    // constructs deck
    public Deck() {

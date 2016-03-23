@@ -1,6 +1,8 @@
 package com.example.tylerbwong.cardgame.components;
 
-public class LQueue<T> {
+import java.io.Serializable;
+
+public class LQueue<T> implements Serializable {
    // LQueue instance variables
    private Node front;
    private Node end;

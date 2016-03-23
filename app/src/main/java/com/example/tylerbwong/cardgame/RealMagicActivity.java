@@ -33,6 +33,7 @@ public class RealMagicActivity extends AppCompatActivity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_real_magic);
+      setFullscreen();
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
@@ -65,16 +66,9 @@ public class RealMagicActivity extends AppCompatActivity {
    }
 
    public void nextAction(View v) {
-      //Intent nextIntent = new Intent(this, FirstPileActivity.class);
-      //startActivity(nextIntent);
-   }
-
-   @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus) {
-         setFullscreen();
-      }
+      Intent nextIntent = new Intent(this, MagicNumberActivity.class);
+      //nextIntent.putExtra("trick", trick);
+      startActivity(nextIntent);
    }
 
    private void setFullscreen() {

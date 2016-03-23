@@ -3,7 +3,6 @@ package com.example.tylerbwong.cardgame;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -51,6 +50,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_magic);
+      setFullscreen();
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
       suits = new ArrayList<>();
@@ -154,14 +154,6 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
       if (suitCheck) {
          submitButton.setEnabled(true);
-      }
-   }
-
-   @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus) {
-         setFullscreen();
       }
    }
 
