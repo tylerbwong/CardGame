@@ -4,7 +4,6 @@ import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
  * Created by tylerbwong on 3/22/16.
@@ -13,33 +12,39 @@ public class MagicTrick {
    private Deck deck;
    private Card solution;
    private int choice;
+   private Card card;
    private ArrayList<Card> trickDeck;
    private ArrayList<Card> pile1;
    private ArrayList<Card> pile2;
    private ArrayList<Card> pile3;
    private ArrayList<Card>[] piles;
+   private int[] order;
+   private int stage = 0;
+   private int currentChoice = -1;
 
-   final static int TOP = 0;
-   final static int MIDDLE = 1;
-   final static int BOTTOM = 2;
    final static int NUM_CARDS = 27;
+   final static int STAGES = 3;
 
-   LinkedHashMap<Integer, OrderSet> order;
-
-   public MagicTrick(Deck deck, int choice) {
+   public MagicTrick(Deck deck) {
       this.deck = deck;
-      this.choice = choice;
       this.deck.shuffle();
+      pile1 = new ArrayList<Card>();
+      pile2 = new ArrayList<Card>();
+      pile3 = new ArrayList<Card>();
       makeTrickDeck();
-      initOrders();
    }
 
-   private void initOrders() {
-      order = new LinkedHashMap<Integer, OrderSet>();
+   private void convertToBaseThree() {
+      int rem, num = choice;
+      int base = STAGES;
+      int index = 0;
+      order = new int[STAGES];
 
-      order.put(0, new OrderSet(TOP, TOP, TOP));
-      order.put(1, new OrderSet(MIDDLE, TOP, TOP));
-      order.put(2, new OrderSet(BOTTOM, TOP, TOP));
+      while (num != 0) {
+         rem = num % base;
+         num = num / base;
+         order[index++] = rem;
+      }
    }
 
    private void makeTrickDeck() {
@@ -50,45 +55,86 @@ public class MagicTrick {
       }
    }
 
-   private void dealToPiles() {
-      for (int index = 0; index < NUM_CARDS; index++) {
-         if (index < 9) {
-            pile1.add(trickDeck.get(index));
-         }
-         else if (index < 18) {
-            pile2.add(trickDeck.get(index));
-         }
-         else {
-            pile3.add(trickDeck.get(index));
+   private void repopulateTrickDeck() {
+      for (ArrayList<Card> pile : piles) {
+         for (int index = 0; index < pile.size(); index++) {
+            trickDeck.add(pile.get(index));
          }
       }
+   }
+
+   public void dealToPiles() {
+      int index1 = 0;
+      pile1.clear();
+      pile2.clear();
+      pile3.clear();
       piles = new ArrayList[]{pile1, pile2, pile3};
+
+      while (index1 < NUM_CARDS) {
+         for (int index2 = 0; index2 < piles.length; index2++) {
+            piles[index2].add(trickDeck.get(index1));
+            index1++;
+         }
+      }
    }
 
-   private void returnPilesToDeck() {
+   public void setChoice(int choice) {
+      this.choice = choice;
+      convertToBaseThree();
+   }
+
+   public void setCard(int choice) {
+      card = trickDeck.get(choice);
+   }
+
+   public ArrayList<Card> getTrickDeck() {
+      return trickDeck;
+   }
+
+   public ArrayList<Card>[] getPiles() {
+      return piles;
+   }
+
+   public int getStage() {
+      return stage;
+   }
+
+   public void returnPilesToDeck() {
       trickDeck.clear();
-   }
 
-   public boolean verifyChoice(ArrayList<Card> pile) {
-      if (!pile.contains(solution)) {
-         return false;
+      // TODO return piles in correct order
+      if (stage == 0) {
+         swapPiles(currentChoice, order[stage]);
+         stage++;
       }
-      return true;
-   }
-
-   public void doTrick() {
-      dealToPiles();
-   }
-
-   private class OrderSet {
-      public int round1;
-      public int round2;
-      public int round3;
-
-      public OrderSet(int round1, int round2, int round3) {
-         this.round1 = round1;
-         this.round2 = round2;
-         this.round3 = round3;
+      else if (stage == 1) {
+         swapPiles(currentChoice, order[stage]);
+         stage++;
       }
+      else {
+         swapPiles(currentChoice, order[stage]);
+         stage++;
+      }
+      repopulateTrickDeck();
+   }
+
+   public boolean verifyChoice(int userChoice) {
+      //if (piles[userChoice].contains(card)) {
+         currentChoice = userChoice;
+         return true;
+      //}
+      //return false;
+   }
+
+   private void swapPiles(int from, int to) {
+      ArrayList<Card> temp;
+
+      temp = piles[from];
+      piles[from] = piles[to];
+      piles[to] = temp;
+   }
+
+   public Card getSolution() {
+      return trickDeck.get(choice);
    }
 }
