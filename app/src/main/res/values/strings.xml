@@ -5,6 +5,7 @@
     <string name="black_jack">PLAY BLACK JACK</string>
     <string name="magic_trick">MAGIC TRICK</string>
     <string name="exit">EXIT</string>
+    <string name="back">BACK</string>
     <string name="prompt1">CHOOSE A SUIT</string>
     <string name="prompt2">CHOOSE A CARD VALUE</string>
     <string name="spades">SPADES</string>
@@ -13,6 +14,9 @@
     <string name="clubs">CLUBS</string>
     <string name="submit">SUBMIT</string>
     <string name="magic_result">WAS THIS YOUR CARD?</string>
+    <string name="back_to_main">BACK TO MAIN MENU</string>
+    <string name="again">TRY AGAIN</string>
+    <string name="empty">NULL</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>

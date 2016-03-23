@@ -88,4 +88,16 @@
         android:text="@string/submit"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
+    <Button
+        android:id="@+id/back"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:onClick="backAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/back"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 </LinearLayout>

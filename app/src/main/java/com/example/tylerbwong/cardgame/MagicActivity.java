@@ -1,6 +1,7 @@
 package com.example.tylerbwong.cardgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
    private TextView subtitleLabel2;
    private Spinner spinner;
    private Button submitButton;
+   private Button backButton;
    private RadioButton spadeButton;
    private RadioButton heartButton;
    private RadioButton clubButton;
@@ -69,10 +71,13 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       submitButton = (Button) findViewById(R.id.submit);
       submitButton.setEnabled(false);
 
+      backButton = (Button) findViewById(R.id.back);
+
       titleLabel.setTypeface(gotham);
       subtitleLabel1.setTypeface(gotham);
       subtitleLabel2.setTypeface(gotham);
       submitButton.setTypeface(gotham);
+      backButton.setTypeface(gotham);
 
       MySpinnerAdapter adapter = new MySpinnerAdapter(this,
             android.R.layout.simple_spinner_item, Arrays.asList(getResources().getStringArray(R.array.value_array)));
@@ -125,10 +130,15 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
    }
 
    public void submitAction(View v) {
-      // Intent submitIntent = new Intent(this, MagicResultActivity.class);
-      // submitIntent.putExtra("suit", suitChoice);
-      // submitIntent.putExtra("rank", selection);
-      // startActivity(submitIntent);
+      Intent submitIntent = new Intent(this, MagicResultActivity.class);
+      submitIntent.putExtra("suit", suitChoice);
+      submitIntent.putExtra("rank", rank);
+      startActivity(submitIntent);
+   }
+
+   public void backAction(View v) {
+      Intent backIntent = new Intent(this, MainActivity.class);
+      startActivity(backIntent);
    }
 
    public void submitButtonEnabled(View view) {
