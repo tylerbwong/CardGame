@@ -17,6 +17,10 @@
     <string name="back_to_main">BACK TO MAIN MENU</string>
     <string name="again">TRY AGAIN</string>
     <string name="empty">NULL</string>
+    <string name="next">NEXT</string>
+    <string name="real_magic_trick">REAL MAGIC TRICK</string>
+    <string name="ace_spades">Ace of Spades</string>
+    <string name="remember">Remember one of the cards below!</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>

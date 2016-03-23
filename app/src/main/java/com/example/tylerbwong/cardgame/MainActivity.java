@@ -2,12 +2,14 @@ package com.example.tylerbwong.cardgame;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
    private TextView titleLabel;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
    private Button war;
    private Button blackJack;
    private Button magicTrick;
+   private Button realMagicTrick;
    private Button exit;
 
    @Override
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
       war = (Button) findViewById(R.id.war);
       blackJack = (Button) findViewById(R.id.black_jack);
       magicTrick = (Button) findViewById(R.id.magic_trick);
+      realMagicTrick = (Button) findViewById(R.id.real_magic_trick);
       exit = (Button) findViewById(R.id.exit);
 
       // set title font to gotham light
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
       war.setTypeface(gotham);
       blackJack.setTypeface(gotham);
       magicTrick.setTypeface(gotham);
+      realMagicTrick.setTypeface(gotham);
       exit.setTypeface(gotham);
    }
 
@@ -52,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void crazyAction(View v) {
-
    }
 
    /**
@@ -62,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void warAction(View v) {
-
    }
 
    /**
@@ -72,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void blackAction(View v) {
-
    }
 
    /**
@@ -84,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
    public void magicAction(View v) {
       Intent magicIntent = new Intent(this, MagicActivity.class);
       startActivity(magicIntent);
+   }
+
+   /**
+    * This method will start a REAL Magic
+    * Trick.
+    *
+    * @param v
+    */
+   public void realMagicAction(View v) {
+      Intent realMagicIntent = new Intent(this, RealMagicActivity.class);
+      startActivity(realMagicIntent);
    }
 
    /**

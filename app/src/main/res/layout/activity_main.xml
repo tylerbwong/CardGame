@@ -27,7 +27,6 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:onClick="crazyAction"
         android:stateListAnimator="@anim/button_animator"
@@ -39,7 +38,6 @@
         android:id="@+id/war"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:onClick="warAction"
         android:stateListAnimator="@anim/button_animator"
@@ -51,7 +49,6 @@
         android:id="@+id/black_jack"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:onClick="blackAction"
         android:stateListAnimator="@anim/button_animator"
@@ -63,11 +60,21 @@
         android:id="@+id/magic_trick"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:onClick="magicAction"
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/magic_trick"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/real_magic_trick"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="realMagicAction"
+        android:stateListAnimator="@anim/button_animator"
+        android:text="@string/real_magic_trick"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
 

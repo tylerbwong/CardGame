@@ -2,6 +2,7 @@ package com.example.tylerbwong.cardgame;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,8 +28,8 @@ public class MagicResultActivity extends AppCompatActivity {
    final static String KING = "King";
 
    @Override
-   protected void onCreate(Bundle savedInstanceBundle) {
-      super.onCreate(savedInstanceBundle);
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_magic_result);
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");

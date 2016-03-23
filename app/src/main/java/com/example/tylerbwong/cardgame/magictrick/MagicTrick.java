@@ -20,7 +20,7 @@ public class MagicTrick {
    private ArrayList<Card>[] piles;
    private int[] order;
    private int stage = 0;
-   private int currentChoice = -1;
+   private int currentChoice = - 1;
 
    final static int NUM_CARDS = 27;
    final static int STAGES = 3;
@@ -106,12 +106,10 @@ public class MagicTrick {
       if (stage == 0) {
          swapPiles(currentChoice, order[stage]);
          stage++;
-      }
-      else if (stage == 1) {
+      } else if (stage == 1) {
          swapPiles(currentChoice, order[stage]);
          stage++;
-      }
-      else {
+      } else {
          swapPiles(currentChoice, order[stage]);
          stage++;
       }
@@ -120,8 +118,8 @@ public class MagicTrick {
 
    public boolean verifyChoice(int userChoice) {
       //if (piles[userChoice].contains(card)) {
-         currentChoice = userChoice;
-         return true;
+      currentChoice = userChoice;
+      return true;
       //}
       //return false;
    }
