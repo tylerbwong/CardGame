@@ -20,7 +20,7 @@
         android:layout_width="114dp"
         android:layout_height="108dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/icon" />
+        android:src="@mipmap/spade" />
 
     <Button
         android:id="@+id/crazy_eight"
