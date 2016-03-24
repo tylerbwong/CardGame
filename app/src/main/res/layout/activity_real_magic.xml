@@ -1,70 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_gravity="center"
-              android:orientation="vertical"
-              android:padding="@dimen/activity_vertical_margin">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
         android:text="@string/magic_trick"
         android:textColor="@color/colorAccent"
-        android:textSize="45sp"/>
+        android:textSize="45sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:src="@mipmap/heart"/>
+        android:layout_marginBottom="8dp"
+        android:src="@mipmap/heart" />
 
     <TextView
         android:id="@+id/subtitle_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
         android:text="@string/remember"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"
-        android:paddingBottom="20dp"/>
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_cards"
-            android:layout_width="360dp"
+            android:layout_width="wrap_content"
             android:layout_height="360dp"
-            android:layout_gravity="center"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:paddingTop="10dp"
-        android:orientation="horizontal">
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <Button
             android:id="@+id/back"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@color/white"
             android:onClick="backAction"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/back"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/next"
@@ -74,7 +66,7 @@
             android:onClick="nextAction"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/next"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent" />
     </LinearLayout>
 
 </LinearLayout>
