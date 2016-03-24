@@ -40,6 +40,14 @@ public class SplashActivity extends AppCompatActivity {
        }, SPLASH_DISPLAY_LENGTH);
    }
 
+   @Override
+   public void onWindowFocusChanged(boolean hasFocus) {
+      super.onWindowFocusChanged(hasFocus);
+      if (hasFocus) {
+         setFullscreen();
+      }
+   }
+
    private void setFullscreen() {
       View decorView = getWindow().getDecorView();
       decorView.setSystemUiVisibility(

@@ -2,7 +2,6 @@ package com.example.tylerbwong.cardgame;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -67,8 +66,14 @@ public class RealMagicActivity extends AppCompatActivity {
 
    public void nextAction(View v) {
       Intent nextIntent = new Intent(this, MagicNumberActivity.class);
-      //nextIntent.putExtra("trick", trick);
+      nextIntent.putExtra("trick", trick);
       startActivity(nextIntent);
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      setFullscreen();
    }
 
    private void setFullscreen() {

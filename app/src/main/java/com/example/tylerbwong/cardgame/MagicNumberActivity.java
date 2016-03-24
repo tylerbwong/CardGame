@@ -100,10 +100,16 @@ public class MagicNumberActivity extends AppCompatActivity implements OnItemSele
    }
 
    public void nextAction(View v) {
-      //trick.setChoice(input);
+      trick.setChoice(input);
       Intent nextIntent = new Intent(this, PileActivity.class);
       nextIntent.putExtra("trick", trick);
       startActivity(nextIntent);
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      setFullscreen();
    }
 
    private void setFullscreen() {

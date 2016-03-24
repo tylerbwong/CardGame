@@ -124,6 +124,12 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       }
    }
 
+   @Override
+   protected void onResume() {
+      super.onResume();
+      setFullscreen();
+   }
+
    private void setFullscreen() {
       View decorView = getWindow().getDecorView();
       decorView.setSystemUiVisibility(

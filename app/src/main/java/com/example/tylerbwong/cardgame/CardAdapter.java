@@ -11,7 +11,7 @@ import com.example.tylerbwong.cardgame.components.Card;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CardAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    private ArrayList<Card> cards;
    private Typeface typeface;
    public static HashMap<String, Integer> suitMap;
@@ -38,20 +38,20 @@ public class CardAdapter extends RecyclerView.Adapter<ViewHolder> {
 
    // Create new views (invoked by the layout manager)
    @Override
-   public ViewHolder onCreateViewHolder(ViewGroup parent,
+   public CardViewHolder onCreateViewHolder(ViewGroup parent,
                                                   int viewType) {
       // create a new view
       View v = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.card_view, parent, false);
       // set the view's size, margins, paddings and layout parameters
 
-      ViewHolder vh = new ViewHolder(v);
+      CardViewHolder vh = new CardViewHolder(v);
       return vh;
    }
 
    // Replace the contents of a view (invoked by the layout manager)
    @Override
-   public void onBindViewHolder(ViewHolder holder, int position) {
+   public void onBindViewHolder(CardViewHolder holder, int position) {
       // - get element from your dataset at this position
       // - replace the contents of the view with that element
       holder.rank.setText(cards.get(position).toString());

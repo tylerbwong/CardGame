@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
       startActivity(intent);
    }
 
+   @Override
+   protected void onResume() {
+      super.onResume();
+      setFullscreen();
+   }
+
    private void setFullscreen() {
       View decorView = getWindow().getDecorView();
       decorView.setSystemUiVisibility(

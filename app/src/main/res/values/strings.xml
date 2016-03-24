@@ -25,7 +25,12 @@
     <string name="favorite_number_1">WHAT IS YOUR</string>
     <string name="favorite_number_2">FAVORITE NUMBER?</string>
     <string name="invalid">Invalid input</string>
+    <string name="pile_1">WHICH PILE</string>
+    <string name="pile_2">IS YOUR CARD IN?</string>
     <string name="logo_transition">Logo transition</string>
+    <string name="pile1">PILE 1</string>
+    <string name="pile2">PILE 2</string>
+    <string name="pile3">PILE 3</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>
