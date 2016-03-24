@@ -1,15 +1,12 @@
 package com.example.tylerbwong.cardgame;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -17,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by tylerbwong on 3/21/16.
@@ -80,41 +76,12 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       submitButton.setTypeface(gotham);
       backButton.setTypeface(gotham);
 
-      MySpinnerAdapter adapter = new MySpinnerAdapter(this,
+      MySpinnerAdapter adapter = new MySpinnerAdapter(getWindow().getDecorView(), this,
             android.R.layout.simple_spinner_item, Arrays.asList(getResources().getStringArray(R.array.value_array)));
       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
       spinner.setAdapter(adapter);
       spinner.setOnItemSelectedListener(this);
-   }
-
-   private static class MySpinnerAdapter extends ArrayAdapter<String> {
-      // Initialise custom font, for example:
-      Typeface font = Typeface.createFromAsset(getContext().getAssets(),
-            "font/gotham-light.ttf");
-
-      // (In reality I used a manager which caches the Typeface objects)
-      // Typeface font = FontManager.getInstance().getFont(getContext(), BLAMBOT);
-
-      private MySpinnerAdapter(Context context, int resource, List<String> items) {
-         super(context, resource, items);
-      }
-
-      // Affects default (closed) state of the spinner
-      @Override
-      public View getView(int position, View convertView, ViewGroup parent) {
-         TextView view = (TextView) super.getView(position, convertView, parent);
-         view.setTypeface(font);
-         return view;
-      }
-
-      // Affects opened state of the spinner
-      @Override
-      public View getDropDownView(int position, View convertView, ViewGroup parent) {
-         TextView view = (TextView) super.getDropDownView(position, convertView, parent);
-         view.setTypeface(font);
-         return view;
-      }
    }
 
    @Override
