@@ -23,7 +23,6 @@ import java.util.Arrays;
  */
 public class RealMagicNumberActivity extends AppCompatActivity implements OnItemSelectedListener {
    private TextView titleLabel;
-   private TextView subtitleLabel;
    private Button backButton;
    private Button nextButton;
    private Spinner numChoice;
@@ -41,13 +40,11 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
       titleLabel = (TextView) findViewById(R.id.title_label);
-      subtitleLabel = (TextView) findViewById(R.id.subtitle_label);
       backButton = (Button) findViewById(R.id.back);
       nextButton = (Button) findViewById(R.id.next);
       numChoice = (Spinner) findViewById(R.id.spinner);
 
       titleLabel.setTypeface(gotham);
-      subtitleLabel.setTypeface(gotham);
       backButton.setTypeface(gotham);
       nextButton.setTypeface(gotham);
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +20,6 @@ import com.example.tylerbwong.cardgame.magictrick.MagicTrick;
 public class RealMagicPileActivity extends AppCompatActivity {
    private MagicTrick trick;
    private TextView titleLabel;
-   private TextView subtitleLabel;
    private TextView pile1Label;
    private TextView pile2Label;
    private TextView pile3Label;
@@ -35,6 +35,15 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private PileAdapter pile2Adapter;
    private PileAdapter pile3Adapter;
 
+   final static SparseArray<Integer> titleStages;
+
+   static {
+      titleStages = new SparseArray<>();
+
+      titleStages.put(1, R.string.pile_2);
+      titleStages.put(2, R.string.pile_3);
+   }
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
@@ -45,7 +54,6 @@ public class RealMagicPileActivity extends AppCompatActivity {
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
       titleLabel = (TextView) findViewById(R.id.title_label);
-      subtitleLabel = (TextView) findViewById(R.id.subtitle_label);
       pile1Label = (TextView) findViewById(R.id.pile1_label);
       pile2Label = (TextView) findViewById(R.id.pile2_label);
       pile3Label = (TextView) findViewById(R.id.pile3_label);
@@ -57,7 +65,6 @@ public class RealMagicPileActivity extends AppCompatActivity {
       pile3Button = (Button) findViewById(R.id.pile3_button);
 
       titleLabel.setTypeface(gotham);
-      subtitleLabel.setTypeface(gotham);
       pile1Label.setTypeface(gotham);
       pile2Label.setTypeface(gotham);
       pile3Label.setTypeface(gotham);
@@ -112,41 +119,46 @@ public class RealMagicPileActivity extends AppCompatActivity {
 
    public void pile1Clicked(View v) {
       if (trick.isLastStage()) {
-         startSolutionActivity();
+         trick.returnPilesToDeck();
+         startSolutionActivity(v);
       }
-      else if (trick.verifyChoice(0)) {
-         doStage();
+      else {
+         doStage(0);
       }
    }
 
    public void pile2Clicked(View v) {
       if (trick.isLastStage()) {
-         startSolutionActivity();
+         trick.returnPilesToDeck();
+         startSolutionActivity(v);
       }
-      else if (trick.verifyChoice(1)) {
-         doStage();
+      else {
+         doStage(1);
       }
    }
 
    public void pile3Clicked(View v) {
       if (trick.isLastStage()) {
-         startSolutionActivity();
+         trick.returnPilesToDeck();
+         startSolutionActivity(v);
       }
-      else if (trick.verifyChoice(2)) {
-         doStage();
+      else {
+         doStage(2);
       }
    }
 
-   private void doStage() {
+   private void doStage(int choice) {
+      trick.setPileChoice(choice);
       trick.returnPilesToDeck();
       trick.dealToPiles();
       updatePileAdapters(trick.getPiles());
+      titleLabel.setText(getResources().getText(titleStages.get(trick.getStage())));
    }
 
-   private void startSolutionActivity() {
-      //Intent solIntent = new Intent(this, MagicSolution.class);
-      //solIntent.putExtra("solution", trick.getSolution());
-      //startActivity(solIntent);
+   private void startSolutionActivity(View v) {
+      Intent solIntent = new Intent(this, RealMagicResultActivity.class);
+      solIntent.putExtra("solution", trick.getSolution());
+      startActivity(solIntent);
    }
 
    @Override

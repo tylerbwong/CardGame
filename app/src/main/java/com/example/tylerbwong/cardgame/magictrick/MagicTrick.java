@@ -122,9 +122,8 @@ public class MagicTrick implements Parcelable{
       repopulateTrickDeck();
    }
 
-   public boolean verifyChoice(int userChoice) {
+   public void setPileChoice(int userChoice) {
       currentChoice = userChoice;
-      return true;
    }
 
    private void swapPiles(int from, int to) {

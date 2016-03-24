@@ -55,9 +55,8 @@ public class MagicDriver {
 
                // verify choice
                int decision = scan.nextInt();
-               if (trick.verifyChoice(decision)) {
-                  trick.returnPilesToDeck();
-               }
+               trick.setPileChoice(decision);
+               trick.returnPilesToDeck();
             }
          }
          System.out.println("Was your card the " + trick.getSolution().toString());

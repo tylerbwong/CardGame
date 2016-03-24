@@ -16,16 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/favorite_number_1"
+            android:text="@string/favorite_number"
+            android:textAlignment="center"
             android:textSize="30sp"/>
 
-        <TextView
-            android:id="@+id/subtitle_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/favorite_number_2"
-            android:textSize="30sp"/>
     </LinearLayout>
 
     <Spinner
