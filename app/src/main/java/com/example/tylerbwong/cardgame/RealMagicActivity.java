@@ -14,8 +14,6 @@ import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
 import com.example.tylerbwong.cardgame.magictrick.MagicTrick;
 
-import java.util.ArrayList;
-
 /**
  * Created by tylerbwong on 3/23/16.
  */
@@ -26,7 +24,7 @@ public class RealMagicActivity extends AppCompatActivity {
    private Button nextButton;
    private RecyclerView listCards;
    private MagicTrick trick;
-   private ArrayList<Card> trickDeck;
+   private Card[] trickDeck;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +63,8 @@ public class RealMagicActivity extends AppCompatActivity {
    }
 
    public void nextAction(View v) {
-      Bundle trickBundle = new Bundle();
-      trickBundle.putSerializable("trick", trick);
       Intent nextIntent = new Intent(this, RealMagicNumberActivity.class);
-      nextIntent.putExtras(trickBundle);
+      nextIntent.putExtra("trick", trick);
       startActivity(nextIntent);
    }
 

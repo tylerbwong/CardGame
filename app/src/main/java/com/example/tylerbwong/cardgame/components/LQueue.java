@@ -1,8 +1,9 @@
 package com.example.tylerbwong.cardgame.components;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class LQueue<T> implements Serializable {
+public class LQueue<T> implements Parcelable{
    // LQueue instance variables
    private Node front;
    private Node end;
@@ -116,4 +117,33 @@ public class LQueue<T> implements Serializable {
       }
       return size;
    }
+
+   protected LQueue(Parcel in) {
+      front = (Node) in.readValue(Node.class.getClassLoader());
+      end = (Node) in.readValue(Node.class.getClassLoader());
+   }
+
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+      dest.writeValue(front);
+      dest.writeValue(end);
+   }
+
+   @SuppressWarnings("unused")
+   public static final Parcelable.Creator<LQueue> CREATOR = new Parcelable.Creator<LQueue>() {
+      @Override
+      public LQueue createFromParcel(Parcel in) {
+         return new LQueue(in);
+      }
+
+      @Override
+      public LQueue[] newArray(int size) {
+         return new LQueue[size];
+      }
+   };
 }

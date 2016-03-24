@@ -1,25 +1,27 @@
 package com.example.tylerbwong.cardgame.components;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Hand implements Serializable {
+public class Hand implements Parcelable{
    // array of cards
    private int num;
    private ArrayList<Card> hand;
 
    // default hand constructor
    public Hand() {
-      this.hand = new ArrayList<>();
-      this.num = 0;
+      hand = new ArrayList<>();
+      num = 0;
    }
 
    // hand constructor
    public Hand(Deck d, int num) {
       this.num = num;
 
-      for (int i = 0; i < this.num; i++) {
-         this.hand.add(i, d.removeCard());
+      for (int i = 0; i < num; i++) {
+         hand.add(i, d.removeCard());
       }
    }
 
@@ -31,8 +33,8 @@ public class Hand implements Serializable {
     */
    public Card draw(Deck d) {
       Card ret = d.removeCard();
-      this.hand.add(ret);
-      this.num++;
+      hand.add(ret);
+      num++;
       return ret;
    }
 
@@ -46,9 +48,9 @@ public class Hand implements Serializable {
       if (c == - 1) {
          c = 0;
       }
-      Card ret = this.hand.remove(c);
-      this.hand.trimToSize();
-      this.num--;
+      Card ret = hand.remove(c);
+      hand.trimToSize();
+      num--;
       return ret;
    }
 
@@ -69,7 +71,7 @@ public class Hand implements Serializable {
     * Return: a primitive int
     */
    public int getSize() {
-      return this.num;
+      return num;
    }
 
    /*
@@ -79,8 +81,47 @@ public class Hand implements Serializable {
     * Return: N/A
     */
    public void addCard(Card c) {
-      this.hand.add(c);
-      this.num++;
+      hand.add(c);
+      num++;
    }
+
+   protected Hand(Parcel in) {
+      num = in.readInt();
+      if (in.readByte() == 0x01) {
+         hand = new ArrayList<Card>();
+         in.readList(hand, Card.class.getClassLoader());
+      } else {
+         hand = null;
+      }
+   }
+
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+      dest.writeInt(num);
+      if (hand == null) {
+         dest.writeByte((byte) (0x00));
+      } else {
+         dest.writeByte((byte) (0x01));
+         dest.writeList(hand);
+      }
+   }
+
+   @SuppressWarnings("unused")
+   public static final Parcelable.Creator<Hand> CREATOR = new Parcelable.Creator<Hand>() {
+      @Override
+      public Hand createFromParcel(Parcel in) {
+         return new Hand(in);
+      }
+
+      @Override
+      public Hand[] newArray(int size) {
+         return new Hand[size];
+      }
+   };
 }
 

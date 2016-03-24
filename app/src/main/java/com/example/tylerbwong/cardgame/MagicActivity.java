@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -40,7 +39,9 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
    private RadioButton diamondButton;
    private String rank;
    private int suitChoice;
-   private ArrayList<RadioButton> suits;
+   private RadioButton[] suits;
+
+   final static int NUM_SUITS = 4;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       setFullscreen();
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
-      suits = new ArrayList<>();
+      suits = new RadioButton[NUM_SUITS];
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       subtitleLabel1 = (TextView) findViewById(R.id.subtitle_label1);
@@ -60,10 +61,10 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       clubButton = (RadioButton) findViewById(R.id.club_button);
       diamondButton = (RadioButton) findViewById(R.id.diamond_button);
 
-      suits.add(spadeButton);
-      suits.add(heartButton);
-      suits.add(clubButton);
-      suits.add(diamondButton);
+      suits[0] = spadeButton;
+      suits[1] = heartButton;
+      suits[2] = clubButton;
+      suits[3] = diamondButton;
 
       submitButton = (Button) findViewById(R.id.submit);
       submitButton.setEnabled(false);
@@ -115,7 +116,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
       for (RadioButton suit : suits) {
          if (suit.isChecked()) {
             suitCheck = true;
-            suitChoice = suits.indexOf(suit);
+            suitChoice = Arrays.asList(suits).indexOf(suit);
          }
       }
 

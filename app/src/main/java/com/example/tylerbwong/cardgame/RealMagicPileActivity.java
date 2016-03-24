@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.magictrick.MagicTrick;
 
-import java.util.ArrayList;
-
 /**
  * Created by tylerbwong on 3/23/16.
  */
@@ -31,7 +29,7 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private Button pile1Button;
    private Button pile2Button;
    private Button pile3Button;
-   private ArrayList<Card>[] piles;
+   private Card[][] piles;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -78,19 +76,18 @@ public class RealMagicPileActivity extends AppCompatActivity {
 
       pile1.setLayoutManager(layout1);
       pile2.setLayoutManager(layout2);
-      pile2.setLayoutManager(layout3);
-
-      updatePileView();
+      pile3.setLayoutManager(layout3);
 
       Intent startIntent = getIntent();
       Bundle trickBundle = startIntent.getExtras();
-      trick = (MagicTrick) trickBundle.getSerializable("trick");
+      trick = trickBundle.getParcelable("trick");
 
-      trick.dealToPiles();
+      updatePileView();
    }
 
    private void updatePileView() {
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      trick.dealToPiles();
 
       piles = trick.getPiles();
 
@@ -104,21 +101,33 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    public void pile1Clicked(View v) {
+      if (trick.verifyChoice(0)) {
+         trick.returnPilesToDeck();
+      }
       if (isLastStage()) {
          startSolutionActivity();
       }
+      updatePileView();
    }
 
    public void pile2Clicked(View v) {
+      if (trick.verifyChoice(1)) {
+         trick.returnPilesToDeck();
+      }
       if (isLastStage()) {
          startSolutionActivity();
       }
+      updatePileView();
    }
 
    public void pile3Clicked(View v) {
+      if (trick.verifyChoice(2)) {
+         trick.returnPilesToDeck();
+      }
       if (isLastStage()) {
          startSolutionActivity();
       }
+      updatePileView();
    }
 
    private boolean isLastStage() {

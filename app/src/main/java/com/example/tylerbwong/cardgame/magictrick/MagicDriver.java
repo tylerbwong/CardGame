@@ -3,20 +3,19 @@ package com.example.tylerbwong.cardgame.magictrick;
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by tylerbwong on 3/22/16.
  */
 public class MagicDriver {
-   public static void printArray(ArrayList<Card> array) {
+   public static void printArray(Card[] array) {
       for (Card card : array) {
          System.out.println(card.toString());
       }
    }
 
-   public static void printPiles(ArrayList<Card>[] piles) {
+   public static void printPiles(Card[][] piles) {
       for (int index = 0; index < piles.length; index++) {
          System.out.println("Choice " + index);
          printArray(piles[index]);
@@ -41,7 +40,7 @@ public class MagicDriver {
 
          // print out cards
          System.out.println("Remember one of these cards and don't forget!");
-         ArrayList<Card> trickDeck = trick.getTrickDeck();
+         Card[] trickDeck = trick.getTrickDeck();
          printArray(trickDeck);
          System.out.println("Press 1 when ready!");
          int answer = scan.nextInt();

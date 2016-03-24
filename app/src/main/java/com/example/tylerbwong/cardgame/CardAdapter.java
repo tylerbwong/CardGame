@@ -2,19 +2,18 @@ package com.example.tylerbwong.cardgame;
 
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tylerbwong.cardgame.components.Card;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
-   private ArrayList<Card> cards;
+   private Card[] cards;
    private Typeface typeface;
-   public static HashMap<String, Integer> suitMap;
+   public static SparseArray<Integer> suitMap;
 
    final static String ACE = "Ace";
    final static String JACK = "Jack";
@@ -22,16 +21,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    final static String KING = "King";
 
    static {
-      suitMap = new HashMap<>();
+      suitMap = new SparseArray<>();
 
-      suitMap.put("Clubs", R.mipmap.club);
-      suitMap.put("Hearts", R.mipmap.heart);
-      suitMap.put("Diamonds", R.mipmap.diamond);
-      suitMap.put("Spades", R.mipmap.spade);
+      suitMap.put(0, R.mipmap.spade);
+      suitMap.put(1, R.mipmap.heart);
+      suitMap.put(2, R.mipmap.diamond);
+      suitMap.put(3, R.mipmap.club);
    }
 
    // Provide a suitable constructor (depends on the kind of dataset)
-   public CardAdapter(ArrayList<Card> cards, Typeface typeface) {
+   public CardAdapter(Card[] cards, Typeface typeface) {
       this.cards = cards;
       this.typeface = typeface;
    }
@@ -54,8 +53,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    public void onBindViewHolder(CardViewHolder holder, int position) {
       // - get element from your dataset at this position
       // - replace the contents of the view with that element
-      holder.rank.setText(cards.get(position).toString());
-      int temp = cards.get(position).getNum();
+      holder.rank.setText(cards[position].toString());
+      int temp = cards[position].getNum();
       String result = "";
       if (temp >= 11 && temp <= 14) {
          switch (temp) {
@@ -77,7 +76,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
          result = temp + "";
       }
       holder.smallRank.setText(result);
-      holder.suit.setImageResource(suitMap.get(cards.get(position).getSuit()));
+      holder.suit.setImageResource(suitMap.get(cards[position].getSuitNum()));
       holder.rank.setTypeface(typeface);
       holder.smallRank.setTypeface(typeface);
    }
@@ -85,7 +84,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    // Return the size of your dataset (invoked by the layout manager)
    @Override
    public int getItemCount() {
-      return cards.size();
+      return cards.length;
    }
 
    @Override

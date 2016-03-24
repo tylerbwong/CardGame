@@ -1,37 +1,39 @@
 package com.example.tylerbwong.cardgame.magictrick;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.components.Deck;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by tylerbwong on 3/22/16.
  */
-public class MagicTrick implements Serializable {
+public class MagicTrick implements Parcelable{
    private Deck deck;
    private Card solution;
    private int choice;
    private Card card;
-   private ArrayList<Card> trickDeck;
-   private ArrayList<Card> pile1;
-   private ArrayList<Card> pile2;
-   private ArrayList<Card> pile3;
-   private ArrayList<Card>[] piles;
+   private Card[] trickDeck;
+   private Card[] pile1;
+   private Card[] pile2;
+   private Card[] pile3;
+   private Card[][] piles;
    private int[] order;
    private int stage = 0;
    private int currentChoice = - 1;
 
    final static int NUM_CARDS = 27;
    final static int STAGES = 3;
+   final static int NUM_PILES = 3;
+   final static int PILE_SIZE = 9;
 
    public MagicTrick(Deck deck) {
       this.deck = deck;
       this.deck.shuffle();
-      pile1 = new ArrayList<Card>();
-      pile2 = new ArrayList<Card>();
-      pile3 = new ArrayList<Card>();
+      pile1 = new Card[PILE_SIZE];
+      pile2 = new Card[PILE_SIZE];
+      pile3 = new Card[PILE_SIZE];
       makeTrickDeck();
    }
 
@@ -50,31 +52,31 @@ public class MagicTrick implements Serializable {
 
    private void makeTrickDeck() {
       // initialize 27-card deck
-      trickDeck = new ArrayList<>();
+      trickDeck = new Card[NUM_CARDS];
       for (int index = 0; index < NUM_CARDS; index++) {
-         trickDeck.add(deck.removeCard());
+         trickDeck[index] = deck.removeCard();
       }
    }
 
    private void repopulateTrickDeck() {
-      for (ArrayList<Card> pile : piles) {
-         for (int index = 0; index < pile.size(); index++) {
-            trickDeck.add(pile.get(index));
+      int index = 0;
+      for (Card[] pile : piles) {
+         for (int index1 = 0; index1 < PILE_SIZE; index1++, index++) {
+            trickDeck[index] = pile[index1];
          }
       }
    }
 
    public void dealToPiles() {
-      int index1 = 0;
-      pile1.clear();
-      pile2.clear();
-      pile3.clear();
-      piles = new ArrayList[]{pile1, pile2, pile3};
+      int index3 = 0;
+      pile1 = new Card[PILE_SIZE];
+      pile2 = new Card[PILE_SIZE];
+      pile3 = new Card[PILE_SIZE];
+      piles = new Card[][] {pile1, pile2, pile3};
 
-      while (index1 < NUM_CARDS) {
-         for (int index2 = 0; index2 < piles.length; index2++) {
-            piles[index2].add(trickDeck.get(index1));
-            index1++;
+      for (int index1 = 0; index1 < PILE_SIZE; index1++) {
+         for (int index2 = 0; index2 < NUM_PILES; index2++, index3++) {
+            piles[index2][index1] = trickDeck[index3];
          }
       }
    }
@@ -85,14 +87,14 @@ public class MagicTrick implements Serializable {
    }
 
    public void setCard(int choice) {
-      card = trickDeck.get(choice);
+      card = trickDeck[choice];
    }
 
-   public ArrayList<Card> getTrickDeck() {
+   public Card[] getTrickDeck() {
       return trickDeck;
    }
 
-   public ArrayList<Card>[] getPiles() {
+   public Card[][] getPiles() {
       return piles;
    }
 
@@ -101,9 +103,8 @@ public class MagicTrick implements Serializable {
    }
 
    public void returnPilesToDeck() {
-      trickDeck.clear();
+      trickDeck = new Card[NUM_CARDS];
 
-      // TODO return piles in correct order
       if (stage == 0) {
          swapPiles(currentChoice, order[stage]);
          stage++;
@@ -118,15 +119,12 @@ public class MagicTrick implements Serializable {
    }
 
    public boolean verifyChoice(int userChoice) {
-      //if (piles[userChoice].contains(card)) {
       currentChoice = userChoice;
       return true;
-      //}
-      //return false;
    }
 
    private void swapPiles(int from, int to) {
-      ArrayList<Card> temp;
+      Card[] temp;
 
       temp = piles[from];
       piles[from] = piles[to];
@@ -134,6 +132,43 @@ public class MagicTrick implements Serializable {
    }
 
    public Card getSolution() {
-      return trickDeck.get(choice);
+      return trickDeck[choice];
    }
+
+   protected MagicTrick(Parcel in) {
+      trickDeck = in.createTypedArray(Card.CREATOR);
+      solution = in.readParcelable(Card.class.getClassLoader());
+      choice = in.readInt();
+      card = in.readParcelable(Card.class.getClassLoader());
+      stage = in.readInt();
+      currentChoice = in.readInt();
+   }
+
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+      dest.writeTypedArray(trickDeck, flags);
+      dest.writeParcelable(solution, flags);
+      dest.writeInt(choice);
+      dest.writeParcelable(card, flags);
+      dest.writeInt(stage);
+      dest.writeInt(currentChoice);
+   }
+
+   @SuppressWarnings("unused")
+   public static final Parcelable.Creator<MagicTrick> CREATOR = new Parcelable.Creator<MagicTrick>() {
+      @Override
+      public MagicTrick createFromParcel(Parcel in) {
+         return new MagicTrick(in);
+      }
+
+      @Override
+      public MagicTrick[] newArray(int size) {
+         return new MagicTrick[size];
+      }
+   };
 }

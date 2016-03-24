@@ -60,7 +60,7 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
 
       Intent startIntent = getIntent();
       Bundle trickBundle = startIntent.getExtras();
-      trick = (MagicTrick) trickBundle.getSerializable("trick");
+      trick = trickBundle.getParcelable("trick");
    }
 
    private class TypefaceSpan extends MetricAffectingSpan {
@@ -102,10 +102,8 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
 
    public void nextAction(View v) {
       trick.setChoice(input);
-      Bundle trickBundle = new Bundle();
-      trickBundle.putSerializable("trick", trick);
       Intent nextIntent = new Intent(this, RealMagicPileActivity.class);
-      nextIntent.putExtras(trickBundle);
+      nextIntent.putExtra("trick", trick);
       startActivity(nextIntent);
    }
 

@@ -1,10 +1,13 @@
 package com.example.tylerbwong.cardgame.components;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Card implements Serializable {
+public class Card implements Parcelable {
    private int num;
    private String suit;
+   private int suitNum = 0;
+
    final static String JACK = "Jack";
    final static String QUEEN = "Queen";
    final static String KING = "King";
@@ -14,12 +17,26 @@ public class Card implements Serializable {
    public Card() {
       this.num = 1;
       this.suit = "Spades";
+      this.suitNum = 0;
    }
 
    // constructor
    public Card(int num, String suit) {
       this.num = num;
       this.suit = suit;
+   }
+
+   public int getSuitNum() {
+      switch (suit) {
+         case "Spades":
+            return 0;
+         case "Hearts":
+            return 1;
+         case "Diamonds":
+            return 2;
+         default:
+            return 3;
+      }
    }
 
    /*
@@ -70,5 +87,36 @@ public class Card implements Serializable {
       }
       return face + " of " + suit;
    }
+
+   protected Card(Parcel in) {
+      num = in.readInt();
+      suit = in.readString();
+      suitNum = in.readInt();
+   }
+
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+      dest.writeInt(num);
+      dest.writeString(suit);
+      dest.writeInt(suitNum);
+   }
+
+   @SuppressWarnings("unused")
+   public static final Parcelable.Creator<Card> CREATOR = new Parcelable.Creator<Card>() {
+      @Override
+      public Card createFromParcel(Parcel in) {
+         return new Card(in);
+      }
+
+      @Override
+      public Card[] newArray(int size) {
+         return new Card[size];
+      }
+   };
 }
 

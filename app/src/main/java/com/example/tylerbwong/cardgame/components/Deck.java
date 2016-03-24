@@ -1,9 +1,11 @@
 package com.example.tylerbwong.cardgame.components;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Random;
 
-public class Deck extends LQueue<Card> implements Serializable {
+public class Deck extends LQueue<Card> implements Parcelable{
 
    // constructs deck
    public Deck() {
@@ -118,4 +120,31 @@ public class Deck extends LQueue<Card> implements Serializable {
          this.enqueue(list[i]);
       }
    }
+
+   protected Deck(Parcel in) {
+
+   }
+
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+
+   }
+
+   @SuppressWarnings("unused")
+   public static final Parcelable.Creator<Deck> CREATOR = new Parcelable.Creator<Deck>() {
+      @Override
+      public Deck createFromParcel(Parcel in) {
+         return new Deck(in);
+      }
+
+      @Override
+      public Deck[] newArray(int size) {
+         return new Deck[size];
+      }
+   };
 }
