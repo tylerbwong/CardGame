@@ -37,6 +37,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private PileAdapter pile2Adapter;
    private PileAdapter pile3Adapter;
 
+   private LinearLayoutManager layout1;
+   private LinearLayoutManager layout2;
+   private LinearLayoutManager layout3;
+
    final static SparseArray<Integer> titleStages;
 
    static {
@@ -78,13 +82,13 @@ public class RealMagicPileActivity extends AppCompatActivity {
       pile2.setHasFixedSize(true);
       pile3.setHasFixedSize(true);
 
-      LinearLayoutManager layout1 = new LinearLayoutManager(this);
+      layout1 = new LinearLayoutManager(this);
       layout1.setOrientation(LinearLayoutManager.HORIZONTAL);
 
-      LinearLayoutManager layout2 = new LinearLayoutManager(this);
+      layout2 = new LinearLayoutManager(this);
       layout2.setOrientation(LinearLayoutManager.HORIZONTAL);
 
-      LinearLayoutManager layout3 = new LinearLayoutManager(this);
+      layout3 = new LinearLayoutManager(this);
       layout3.setOrientation(LinearLayoutManager.HORIZONTAL);
 
       pile1.setLayoutManager(layout1);
@@ -117,6 +121,13 @@ public class RealMagicPileActivity extends AppCompatActivity {
       pile1Adapter.changeCards(newPiles[0]);
       pile2Adapter.changeCards(newPiles[1]);
       pile3Adapter.changeCards(newPiles[2]);
+      resetRecyclerPosition();
+   }
+
+   private void resetRecyclerPosition() {
+      layout1.scrollToPosition(0);
+      layout2.scrollToPosition(0);
+      layout3.scrollToPosition(0);
    }
 
    public void pile1Clicked(View v) {

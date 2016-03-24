@@ -127,11 +127,13 @@ public class MagicTrick implements Parcelable{
    }
 
    private void swapPiles(int from, int to) {
-      Card[] temp;
+      if (from != to) {
+         Card[] temp;
 
-      temp = piles[from];
-      piles[from] = piles[to];
-      piles[to] = temp;
+         temp = piles[from];
+         piles[from] = piles[to];
+         piles[to] = temp;
+      }
    }
 
    public Card getSolution() {
