@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:label="Cards">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".gui.mainmenu.SplashActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait">
             <intent-filter>
@@ -16,25 +16,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".gui.mainmenu.MainActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".MagicActivity"
+        <activity android:name=".gui.magic.MagicActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".MagicResultActivity"
+        <activity android:name=".gui.magic.MagicResultActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RealMagicActivity"
+        <activity android:name=".gui.realmagic.RealMagicActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RealMagicNumberActivity"
+        <activity android:name=".gui.realmagic.RealMagicNumberActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RealMagicPileActivity"
+        <activity android:name=".gui.realmagic.RealMagicPileActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RealMagicResultActivity"
+        <activity android:name=".gui.realmagic.RealMagicResultActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
     </application>
