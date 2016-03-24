@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.magictrick.MagicTrick;
 
-import java.util.Arrays;
-
 /**
  * Created by tylerbwong on 3/23/16.
  */
@@ -106,10 +104,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
       pile3.setAdapter(pile3Adapter);
    }
 
-   private void updatePileAdapters() {
-      pile1Adapter.notifyDataSetChanged();
-      pile2Adapter.notifyDataSetChanged();
-      pile3Adapter.notifyDataSetChanged();
+   private void updatePileAdapters(Card[][] newPiles) {
+      pile1Adapter.changeCards(newPiles[0]);
+      pile2Adapter.changeCards(newPiles[1]);
+      pile3Adapter.changeCards(newPiles[2]);
    }
 
    public void pile1Clicked(View v) {
@@ -142,8 +140,7 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private void doStage() {
       trick.returnPilesToDeck();
       trick.dealToPiles();
-      piles = trick.getPiles();
-      updatePileAdapters();
+      updatePileAdapters(trick.getPiles());
    }
 
    private void startSolutionActivity() {

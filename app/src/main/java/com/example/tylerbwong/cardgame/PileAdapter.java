@@ -84,6 +84,12 @@ public class PileAdapter extends RecyclerView.Adapter<PileViewHolder> {
       return cards.length;
    }
 
+   public void changeCards(Card[] newCards)
+   {
+      cards = newCards;
+      notifyDataSetChanged();
+   }
+
    @Override
    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
       super.onAttachedToRecyclerView(recyclerView);
