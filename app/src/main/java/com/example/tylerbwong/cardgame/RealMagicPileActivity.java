@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.components.Card;
 import com.example.tylerbwong.cardgame.magictrick.MagicTrick;
 
+import java.util.Arrays;
+
 /**
  * Created by tylerbwong on 3/23/16.
  */
@@ -30,6 +32,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private Button pile2Button;
    private Button pile3Button;
    private Card[][] piles;
+
+   private PileAdapter pile1Adapter;
+   private PileAdapter pile2Adapter;
+   private PileAdapter pile3Adapter;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -82,56 +88,62 @@ public class RealMagicPileActivity extends AppCompatActivity {
       Bundle trickBundle = startIntent.getExtras();
       trick = trickBundle.getParcelable("trick");
 
-      updatePileView();
+      makePileView();
    }
 
-   private void updatePileView() {
+   private void makePileView() {
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
       trick.dealToPiles();
 
       piles = trick.getPiles();
 
-      PileAdapter pile1Adapter = new PileAdapter(piles[0], gotham);
-      PileAdapter pile2Adapter = new PileAdapter(piles[1], gotham);
-      PileAdapter pile3Adapter = new PileAdapter(piles[2], gotham);
+      pile1Adapter = new PileAdapter(piles[0], gotham);
+      pile2Adapter = new PileAdapter(piles[1], gotham);
+      pile3Adapter = new PileAdapter(piles[2], gotham);
 
       pile1.setAdapter(pile1Adapter);
       pile2.setAdapter(pile2Adapter);
       pile3.setAdapter(pile3Adapter);
    }
 
+   private void updatePileAdapters() {
+      pile1Adapter.notifyDataSetChanged();
+      pile2Adapter.notifyDataSetChanged();
+      pile3Adapter.notifyDataSetChanged();
+   }
+
    public void pile1Clicked(View v) {
-      if (trick.verifyChoice(0)) {
-         trick.returnPilesToDeck();
-      }
-      if (isLastStage()) {
+      if (trick.isLastStage()) {
          startSolutionActivity();
       }
-      updatePileView();
+      else if (trick.verifyChoice(0)) {
+         doStage();
+      }
    }
 
    public void pile2Clicked(View v) {
-      if (trick.verifyChoice(1)) {
-         trick.returnPilesToDeck();
-      }
-      if (isLastStage()) {
+      if (trick.isLastStage()) {
          startSolutionActivity();
       }
-      updatePileView();
+      else if (trick.verifyChoice(1)) {
+         doStage();
+      }
    }
 
    public void pile3Clicked(View v) {
-      if (trick.verifyChoice(2)) {
-         trick.returnPilesToDeck();
-      }
-      if (isLastStage()) {
+      if (trick.isLastStage()) {
          startSolutionActivity();
       }
-      updatePileView();
+      else if (trick.verifyChoice(2)) {
+         doStage();
+      }
    }
 
-   private boolean isLastStage() {
-      return trick.getStage() == 4;
+   private void doStage() {
+      trick.returnPilesToDeck();
+      trick.dealToPiles();
+      piles = trick.getPiles();
+      updatePileAdapters();
    }
 
    private void startSolutionActivity() {

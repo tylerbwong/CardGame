@@ -86,6 +86,10 @@ public class MagicTrick implements Parcelable{
       convertToBaseThree();
    }
 
+   public boolean isLastStage() {
+      return getStage() == 2;
+   }
+
    public void setCard(int choice) {
       card = trickDeck[choice];
    }
@@ -137,6 +141,7 @@ public class MagicTrick implements Parcelable{
 
    protected MagicTrick(Parcel in) {
       trickDeck = in.createTypedArray(Card.CREATOR);
+      order = in.createIntArray();
       solution = in.readParcelable(Card.class.getClassLoader());
       choice = in.readInt();
       card = in.readParcelable(Card.class.getClassLoader());
@@ -152,6 +157,7 @@ public class MagicTrick implements Parcelable{
    @Override
    public void writeToParcel(Parcel dest, int flags) {
       dest.writeTypedArray(trickDeck, flags);
+      dest.writeIntArray(order);
       dest.writeParcelable(solution, flags);
       dest.writeInt(choice);
       dest.writeParcelable(card, flags);
