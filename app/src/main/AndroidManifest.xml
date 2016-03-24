@@ -28,10 +28,10 @@
         <activity android:name=".RealMagicActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".MagicNumberActivity"
+        <activity android:name=".RealMagicNumberActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".PileActivity"
+        <activity android:name=".RealMagicPileActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
     </application>

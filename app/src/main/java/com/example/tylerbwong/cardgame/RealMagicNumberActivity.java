@@ -21,7 +21,7 @@ import java.util.Arrays;
 /**
  * Created by tylerbwong on 3/23/16.
  */
-public class MagicNumberActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class RealMagicNumberActivity extends AppCompatActivity implements OnItemSelectedListener {
    private TextView titleLabel;
    private TextView subtitleLabel;
    private Button backButton;
@@ -59,7 +59,8 @@ public class MagicNumberActivity extends AppCompatActivity implements OnItemSele
       numChoice.setOnItemSelectedListener(this);
 
       Intent startIntent = getIntent();
-      trick = (MagicTrick) startIntent.getSerializableExtra("trick");
+      Bundle trickBundle = startIntent.getExtras();
+      trick = (MagicTrick) trickBundle.getSerializable("trick");
    }
 
    private class TypefaceSpan extends MetricAffectingSpan {
@@ -101,8 +102,10 @@ public class MagicNumberActivity extends AppCompatActivity implements OnItemSele
 
    public void nextAction(View v) {
       trick.setChoice(input);
-      Intent nextIntent = new Intent(this, PileActivity.class);
-      nextIntent.putExtra("trick", trick);
+      Bundle trickBundle = new Bundle();
+      trickBundle.putSerializable("trick", trick);
+      Intent nextIntent = new Intent(this, RealMagicPileActivity.class);
+      nextIntent.putExtras(trickBundle);
       startActivity(nextIntent);
    }
 

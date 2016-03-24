@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by tylerbwong on 3/23/16.
  */
-public class PileActivity extends AppCompatActivity {
+public class RealMagicPileActivity extends AppCompatActivity {
    private MagicTrick trick;
    private TextView titleLabel;
    private TextView subtitleLabel;
@@ -83,7 +83,8 @@ public class PileActivity extends AppCompatActivity {
       updatePileView();
 
       Intent startIntent = getIntent();
-      trick = (MagicTrick) startIntent.getSerializableExtra("trick");
+      Bundle trickBundle = startIntent.getExtras();
+      trick = (MagicTrick) trickBundle.getSerializable("trick");
 
       trick.dealToPiles();
    }

@@ -65,8 +65,10 @@ public class RealMagicActivity extends AppCompatActivity {
    }
 
    public void nextAction(View v) {
-      Intent nextIntent = new Intent(this, MagicNumberActivity.class);
-      nextIntent.putExtra("trick", trick);
+      Bundle trickBundle = new Bundle();
+      trickBundle.putSerializable("trick", trick);
+      Intent nextIntent = new Intent(this, RealMagicNumberActivity.class);
+      nextIntent.putExtras(trickBundle);
       startActivity(nextIntent);
    }
 
