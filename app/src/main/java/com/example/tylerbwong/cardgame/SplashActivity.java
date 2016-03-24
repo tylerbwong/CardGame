@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -24,15 +26,17 @@ public class SplashActivity extends AppCompatActivity {
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
       title.setTypeface(gotham);
 
-      new Handler().postDelayed(new Runnable() {
-         @Override
-         public void run() {
+       new Handler().postDelayed(new Runnable() {
+           @Override
+           public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            SplashActivity.this.startActivity(mainIntent);
-            SplashActivity.this.finish();
-         }
-      }, SPLASH_DISPLAY_LENGTH);
+               Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+               LinearLayout logo = (LinearLayout) findViewById(R.id.logo);
+               ActivityOptionsCompat options = ActivityOptionsCompat.
+                       makeSceneTransitionAnimation(SplashActivity.this, logo, getString(R.string.logo_transition));
+               SplashActivity.this.startActivity(mainIntent, options.toBundle());
+           }
+       }, SPLASH_DISPLAY_LENGTH);
    }
 
    private void setFullscreen() {

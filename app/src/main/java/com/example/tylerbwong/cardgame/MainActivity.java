@@ -2,14 +2,11 @@ package com.example.tylerbwong.cardgame;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
    private TextView titleLabel;
@@ -23,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      overridePendingTransition(R.anim.slow_transition, R.anim.slow_transition);
       setContentView(R.layout.activity_main);
       setFullscreen();
 

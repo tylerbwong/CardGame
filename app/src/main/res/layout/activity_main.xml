@@ -8,19 +8,27 @@
     android:padding="@dimen/activity_vertical_margin"
     tools:context="com.example.tylerbwong.cardgame.MainActivity">
 
-    <TextView
-        android:id="@+id/title_label"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/colorAccent"
-        android:textSize="50sp" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:transitionName="@string/logo_transition">
 
-    <ImageView
-        android:layout_width="114dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="10dp"
-        android:src="@mipmap/spade" />
+        <TextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="50sp" />
+
+        <ImageView
+            android:layout_width="114dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/spade" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/crazy_eight"

@@ -25,6 +25,7 @@
     <string name="favorite_number_1">WHAT IS YOUR</string>
     <string name="favorite_number_2">FAVORITE NUMBER?</string>
     <string name="invalid">Invalid input</string>
+    <string name="logo_transition">Logo transition</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>
