@@ -31,6 +31,7 @@ public class SplashActivity extends AppCompatActivity {
            public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
                Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+               mainIntent.putExtra("logo_transition", true);
                LinearLayout logo = (LinearLayout) findViewById(R.id.logo);
                ActivityOptionsCompat options = ActivityOptionsCompat.
                        makeSceneTransitionAnimation(SplashActivity.this, logo, getString(R.string.logo_transition));

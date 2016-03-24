@@ -20,7 +20,12 @@ public class MainActivity extends AppCompatActivity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      overridePendingTransition(R.anim.slow_transition, R.anim.slow_transition);
+
+      boolean logoTransition = getIntent().getBooleanExtra("logo_transition", false);
+      if (logoTransition) {
+         overridePendingTransition(R.anim.slow_transition, R.anim.slow_transition);
+      }
+
       setContentView(R.layout.activity_main);
       setFullscreen();
 
