@@ -119,8 +119,20 @@ public class RealMagicPileActivity extends AppCompatActivity {
 
    private void updatePileAdapters(Card[][] newPiles) {
       pile1Adapter.changeCards(newPiles[0]);
+      System.out.println("Pile 1: ");
+      for (int i = 0; i < newPiles[0].length; i++) {
+         System.out.println(newPiles[0][i].getNum() + newPiles[0][i].getSuit());
+      }
       pile2Adapter.changeCards(newPiles[1]);
+      System.out.println("Pile 2: ");
+      for (int i = 0; i < newPiles[1].length; i++) {
+         System.out.println(newPiles[1][i].getNum() + newPiles[1][i].getSuit());
+      }
       pile3Adapter.changeCards(newPiles[2]);
+      System.out.println("Pile 2: ");
+      for (int i = 0; i < newPiles[2].length; i++) {
+         System.out.println(newPiles[2][i].getNum() + newPiles[2][i].getSuit());
+      }
       resetRecyclerPosition();
    }
 
@@ -131,37 +143,39 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    public void pile1Clicked(View v) {
+      trick.setPileChoice(0);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
          startSolutionActivity(v);
       }
       else {
-         doStage(0);
+         doStage();
       }
    }
 
    public void pile2Clicked(View v) {
+      trick.setPileChoice(1);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
          startSolutionActivity(v);
       }
       else {
-         doStage(1);
+         doStage();
       }
    }
 
    public void pile3Clicked(View v) {
+      trick.setPileChoice(2);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
          startSolutionActivity(v);
       }
       else {
-         doStage(2);
+         doStage();
       }
    }
 
-   private void doStage(int choice) {
-      trick.setPileChoice(choice);
+   private void doStage() {
       trick.returnPilesToDeck();
       trick.dealToPiles();
       updatePileAdapters(trick.getPiles());
