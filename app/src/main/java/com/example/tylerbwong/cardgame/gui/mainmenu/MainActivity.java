@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.magic.MagicActivity;
 import com.example.tylerbwong.cardgame.gui.realmagic.RealMagicActivity;
+import com.example.tylerbwong.cardgame.gui.war.WarActivity;
 
 public class MainActivity extends AppCompatActivity {
    private TextView titleLabel;
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void warAction(View v) {
+      Intent warIntent = new Intent(this, WarActivity.class);
+      startActivity(warIntent);
    }
 
    /**

@@ -31,6 +31,7 @@
     <string name="pile1">PILE 1</string>
     <string name="pile2">PILE 2</string>
     <string name="pile3">PILE 3</string>
+    <string name="war_dialog">"You got into a war!\nAre you sure you want to continue?"</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>
