@@ -32,6 +32,20 @@
     <string name="pile2">PILE 2</string>
     <string name="pile3">PILE 3</string>
     <string name="war_dialog">"It's a WAR!\n\nAre you sure you want to continue?"</string>
+    <string name="war_event1">WAR! Please play 4 more cards.</string>
+    <string name="war_event2">WAR! Please play 3 more cards</string>
+    <string name="war_event3">WAR! Please play 2 more cards</string>
+    <string name="war_event4">WAR! Please play 1 more card</string>
+    <string name="you_take">You take the cards!</string>
+    <string name="comp_take">The computer takes the cards.</string>
+    <string name="comp_played">"Computer\nPlayed"</string>
+    <string name="you_played">"You\nPlayed"</string>
+    <string name="cards_left">Cards Left</string>
+    <string name="card_left">Card Left</string>
+    <string name="war_title">WAR</string>
+    <string name="play_card">PLAY CARD</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="ace">A</string>
     <string-array name="value_array">
         <item>Ace</item>
         <item>2</item>
