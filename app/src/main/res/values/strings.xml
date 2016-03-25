@@ -20,6 +20,7 @@
     <string name="next">NEXT</string>
     <string name="real_magic_trick">REAL MAGIC TRICK</string>
     <string name="ace_spades">Ace of Spades</string>
+    <string name="queen_diamonds">Queen of Diamonds</string>
     <string name="remember">Remember one of the cards below!</string>
     <string name="number_enter">Enter a number 1-26</string>
     <string name="favorite_number">"WHAT IS YOUR\nFAVORITE NUMBER?"</string>

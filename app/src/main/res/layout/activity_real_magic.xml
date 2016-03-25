@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     android:padding="@dimen/activity_vertical_margin">
 
     <TextView
@@ -12,40 +10,57 @@
         android:layout_height="wrap_content"
         android:text="@string/magic_trick"
         android:textColor="@color/colorAccent"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:src="@mipmap/heart" />
+        android:id="@+id/heart_image"
+        android:layout_marginBottom="10dp"
+        android:src="@mipmap/heart"
+        android:layout_below="@id/title_label"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/subtitle_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:text="@string/remember"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_below="@id/heart_image"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_below="@id/subtitle_label"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/button_layout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_cards"
             android:layout_width="wrap_content"
-            android:layout_height="360dp"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="70dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/button_layout"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/back"
@@ -56,6 +71,7 @@
             android:onClick="backAction"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/back"
+            android:gravity="center"
             android:textColor="@color/colorAccent" />
 
         <Button
@@ -66,7 +82,8 @@
             android:onClick="nextAction"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/next"
+            android:gravity="center"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
