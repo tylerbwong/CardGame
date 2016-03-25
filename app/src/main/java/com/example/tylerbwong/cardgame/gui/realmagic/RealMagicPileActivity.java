@@ -41,6 +41,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    private LinearLayoutManager layout2;
    private LinearLayoutManager layout3;
 
+   final static int PILE_1 = 0;
+   final static int PILE_2 = 1;
+   final static int PILE_3 = 2;
+
    final static SparseArray<Integer> titleStages;
 
    static {
@@ -108,9 +112,9 @@ public class RealMagicPileActivity extends AppCompatActivity {
 
       piles = trick.getPiles();
 
-      pile1Adapter = new PileAdapter(piles[0], gotham);
-      pile2Adapter = new PileAdapter(piles[1], gotham);
-      pile3Adapter = new PileAdapter(piles[2], gotham);
+      pile1Adapter = new PileAdapter(piles[PILE_1], gotham);
+      pile2Adapter = new PileAdapter(piles[PILE_2], gotham);
+      pile3Adapter = new PileAdapter(piles[PILE_3], gotham);
 
       pile1.setAdapter(pile1Adapter);
       pile2.setAdapter(pile2Adapter);
@@ -118,21 +122,9 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    private void updatePileAdapters(Card[][] newPiles) {
-      pile1Adapter.changeCards(newPiles[0]);
-      System.out.println("Pile 1: ");
-      for (int i = 0; i < newPiles[0].length; i++) {
-         System.out.println(newPiles[0][i].getNum() + newPiles[0][i].getSuit());
-      }
-      pile2Adapter.changeCards(newPiles[1]);
-      System.out.println("Pile 2: ");
-      for (int i = 0; i < newPiles[1].length; i++) {
-         System.out.println(newPiles[1][i].getNum() + newPiles[1][i].getSuit());
-      }
-      pile3Adapter.changeCards(newPiles[2]);
-      System.out.println("Pile 2: ");
-      for (int i = 0; i < newPiles[2].length; i++) {
-         System.out.println(newPiles[2][i].getNum() + newPiles[2][i].getSuit());
-      }
+      pile1Adapter.changeCards(newPiles[PILE_1]);
+      pile2Adapter.changeCards(newPiles[PILE_2]);
+      pile3Adapter.changeCards(newPiles[PILE_3]);
       resetRecyclerPosition();
    }
 
@@ -143,10 +135,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    public void pile1Clicked(View v) {
-      trick.setPileChoice(0);
+      trick.setPileChoice(PILE_1);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
-         startSolutionActivity(v);
+         startSolutionActivity();
       }
       else {
          doStage();
@@ -154,10 +146,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    public void pile2Clicked(View v) {
-      trick.setPileChoice(1);
+      trick.setPileChoice(PILE_2);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
-         startSolutionActivity(v);
+         startSolutionActivity();
       }
       else {
          doStage();
@@ -165,10 +157,10 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    public void pile3Clicked(View v) {
-      trick.setPileChoice(2);
+      trick.setPileChoice(PILE_3);
       if (trick.isLastStage()) {
          trick.returnPilesToDeck();
-         startSolutionActivity(v);
+         startSolutionActivity();
       }
       else {
          doStage();
@@ -182,7 +174,7 @@ public class RealMagicPileActivity extends AppCompatActivity {
       titleLabel.setText(getResources().getText(titleStages.get(trick.getStage())));
    }
 
-   private void startSolutionActivity(View v) {
+   private void startSolutionActivity() {
       Intent solIntent = new Intent(this, RealMagicResultActivity.class);
       solIntent.putExtra("solution", trick.getSolution());
       startActivity(solIntent);
