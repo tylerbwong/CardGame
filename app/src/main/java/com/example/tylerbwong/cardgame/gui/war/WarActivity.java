@@ -131,10 +131,13 @@ public class WarActivity extends AppCompatActivity implements Observer {
    public void playAction(View v) {
       if (playButton.getText().toString().equals(getResources().getText(R.string.play_card).toString())) {
          controller.handleTurn();
-         playButton.setText(getResources().getText(R.string.confirm).toString());
-      } else {
+      }
+      else if (playButton.getText().toString().equals(getResources().getText(R.string.confirm).toString())){
          controller.handleConfirm();
-         playButton.setText(getResources().getText(R.string.play_card).toString());
+      }
+      else {
+         Intent backIntent = new Intent(this, MainActivity.class);
+         startActivity(backIntent);
       }
    }
 
@@ -143,21 +146,43 @@ public class WarActivity extends AppCompatActivity implements Observer {
       War war = (War) o;
 
       // update status label
+      String warString = "";
+      int prizeSize = war.getPrizeSize();
+
       switch (war.getCurrentState()) {
          case HUM_COLLECT:
-            statusLabel.setText("You get " + war.getPrizeSize() + " cards!");
+            if (prizeSize > 2) {
+               warString = getResources().getText(R.string.war_event).toString() +
+                     "You get " + war.getPrizeSize() + " cards!";
+            }
+            else {
+               warString = "You get " + war.getPrizeSize() + " cards!";
+            }
+            statusLabel.setText(warString);
+            playButton.setText(getResources().getText(R.string.confirm).toString());
             break;
          case COMP_COLLECT:
-            statusLabel.setText("The computer gets " + war.getPrizeSize() + " cards!");
+            if (prizeSize > 2) {
+               warString = getResources().getText(R.string.war_event).toString() +
+                     "The computer gets " + war.getPrizeSize() + " cards!";
+            }
+            else {
+               warString = "The computer gets " + war.getPrizeSize() + " cards!";
+            }
+            statusLabel.setText(warString);
+            playButton.setText(getResources().getText(R.string.confirm).toString());
             break;
          case COMP_WIN:
             statusLabel.setText(getResources().getText(R.string.comp_win));
+            playButton.setText(getResources().getText(R.string.back_to_main));
             break;
          case HUM_WIN:
             statusLabel.setText(getResources().getText(R.string.hum_win));
+            playButton.setText(getResources().getText(R.string.back_to_main));
             break;
          case HUM_TURN:
             statusLabel.setText(getResources().getText(R.string.hum_turn));
+            playButton.setText(getResources().getText(R.string.play_card).toString());
             break;
          default:
             statusLabel.setText(getResources().getText(R.string.war_start));
