@@ -212,7 +212,7 @@ public class War extends Observable {
 
          // if possible compare the two cards again
          if (userHand.getSize() > 0 && computerHand.getSize() > 0) {
-            compareCards();
+            doTurn();
          }
       }
    }
