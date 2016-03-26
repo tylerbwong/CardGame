@@ -41,6 +41,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
    private WarController controller;
 
    final static int LAST_CARD = 1;
+   final static int MIN_PRIZE = 2;
    final static SparseArray<Integer> suitMap;
 
    static {
@@ -151,7 +152,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
 
       switch (war.getCurrentState()) {
          case HUM_COLLECT:
-            if (prizeSize > 2) {
+            if (prizeSize > MIN_PRIZE) {
                warString = getResources().getText(R.string.war_event).toString() +
                      "You get " + war.getPrizeSize() + " cards!";
             }
@@ -160,9 +161,11 @@ public class WarActivity extends AppCompatActivity implements Observer {
             }
             statusLabel.setText(warString);
             playButton.setText(getResources().getText(R.string.confirm).toString());
+            setScore(war);
+            setCards(war);
             break;
          case COMP_COLLECT:
-            if (prizeSize > 2) {
+            if (prizeSize > MIN_PRIZE) {
                warString = getResources().getText(R.string.war_event).toString() +
                      "The computer gets " + war.getPrizeSize() + " cards!";
             }
@@ -171,6 +174,8 @@ public class WarActivity extends AppCompatActivity implements Observer {
             }
             statusLabel.setText(warString);
             playButton.setText(getResources().getText(R.string.confirm).toString());
+            setScore(war);
+            setCards(war);
             break;
          case COMP_WIN:
             statusLabel.setText(getResources().getText(R.string.comp_win));
@@ -183,12 +188,25 @@ public class WarActivity extends AppCompatActivity implements Observer {
          case HUM_TURN:
             statusLabel.setText(getResources().getText(R.string.hum_turn));
             playButton.setText(getResources().getText(R.string.play_card).toString());
+            setScore(war);
             break;
          default:
             statusLabel.setText(getResources().getText(R.string.war_start));
+            setScore(war);
             break;
       }
+   }
 
+   private void setCards(War war) {
+      // update cards played
+      compSuit.setImageResource(suitMap.get(war.getCompCardInPlay().getSuitNum()));
+      humSuit.setImageResource(suitMap.get(war.getUserCardInPlay().getSuitNum()));
+
+      compRank.setText(convertRank(war.getCompCardInPlay().getNum()));
+      humRank.setText(convertRank(war.getUserCardInPlay().getNum()));
+   }
+
+   private void setScore(War war) {
       // update cards left labels
       String compCardsLeft, humCardsLeft;
       int compScore = war.getCompScore();
@@ -210,13 +228,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
 
       compCards.setText(war.getCompScore() + " " + compCardsLeft);
       humCards.setText(war.getHumScore() + " " + humCardsLeft);
-
-      // update cards played
-      compSuit.setImageResource(suitMap.get(war.getCompCardInPlay().getSuitNum()));
-      humSuit.setImageResource(suitMap.get(war.getUserCardInPlay().getSuitNum()));
-
-      compRank.setText(convertRank(war.getCompCardInPlay().getNum()));
-      humRank.setText(convertRank(war.getUserCardInPlay().getNum()));
    }
 
    private String convertRank(int rank) {

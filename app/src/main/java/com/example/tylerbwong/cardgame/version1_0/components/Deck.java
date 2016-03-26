@@ -7,17 +7,19 @@ import java.util.Random;
 
 public class Deck extends LQueue<Card> implements Parcelable{
 
+   final static int MIN_CARD = 2;
+   final static int MAX_CARD = 14;
    // constructs deck
    public Deck() {
       // construct LQueue
       super();
 
       // add cards to deck
-      for (int i = 2; i < 15; i++) {
-         this.enqueue(new Card(i, "Hearts"));
-         this.enqueue(new Card(i, "Diamonds"));
-         this.enqueue(new Card(i, "Clubs"));
-         this.enqueue(new Card(i, "Spades"));
+      for (int i = MIN_CARD; i <= MAX_CARD; i++) {
+         enqueue(new Card(i, "Hearts"));
+         enqueue(new Card(i, "Diamonds"));
+         enqueue(new Card(i, "Clubs"));
+         enqueue(new Card(i, "Spades"));
       }
    }
 
@@ -28,7 +30,7 @@ public class Deck extends LQueue<Card> implements Parcelable{
     * Return: a Card type
     */
    public Card showTopCard() {
-      Card c = this.peekFront();
+      Card c = peekFront();
       return c;
    }
 
@@ -39,7 +41,7 @@ public class Deck extends LQueue<Card> implements Parcelable{
     * Return: a Card type
     */
    public Card showBottomCard() {
-      Card c = this.peekEnd();
+      Card c = peekEnd();
       return c;
    }
 
@@ -50,7 +52,7 @@ public class Deck extends LQueue<Card> implements Parcelable{
     * Return: N/A
     */
    public void addCard(Card c) {
-      this.enqueue(c);
+      enqueue(c);
    }
 
    /*
@@ -60,7 +62,7 @@ public class Deck extends LQueue<Card> implements Parcelable{
     * Return: a Card type
     */
    public Card removeCard() {
-      return this.dequeue();
+      return dequeue();
    }
 
    /*
@@ -85,11 +87,8 @@ public class Deck extends LQueue<Card> implements Parcelable{
       Random rand = new Random();
 
       // set temp cards
-      int length = this.size();
-      Card temp1, temp2;
+      int length = size();
 
-      // make array for copying
-      int randint;
       Card[] list = new Card[length];
 
       // copy queue to array list for shuffling
@@ -97,27 +96,18 @@ public class Deck extends LQueue<Card> implements Parcelable{
          list[i] = this.dequeue();
       }
 
-      // re-copy cards in random order
-      for (int i = length - 1; i >= 0; i--) {
-         //Creates a random int bounded by 0 to length
-         randint = rand.nextInt(length);
-
-         // random swap at random location
-         temp1 = list[i];
-         temp2 = list[randint];
-
-         // re-add to array list
-         list[i] = temp2;
-
-         // check for duplicates
-         if (! temp1.equals(temp2)) {
-            list[randint] = temp1;
-         }
+      for (int i = length - 1; i > 0; i--)
+      {
+         int index = rand.nextInt(i + 1);
+         // Simple swap
+         Card c = list[index];
+         list[index] = list[i];
+         list[i] = c;
       }
 
       // re-queue the cards
       for (int i = 0; i < length; i++) {
-         this.enqueue(list[i]);
+         enqueue(list[i]);
       }
    }
 

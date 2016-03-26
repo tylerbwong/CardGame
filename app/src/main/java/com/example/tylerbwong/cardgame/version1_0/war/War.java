@@ -29,9 +29,7 @@ public class War extends Observable {
    public War() {
       // create deck and shuffle
       deck = new Deck();
-      for (int i = 0; i < 2; i++) {
-         deck.shuffle();
-      }
+      deck.shuffle();
 
       // create new hands for user and comp
       userHand = new Hand();
@@ -138,19 +136,14 @@ public class War extends Observable {
    }
 
    public void doTurn() {
-      if (!endGame()) {
-         Card userCard = userHand.play(0);
-         setUserCardInPlay(userCard);
-         Card compCard = computerHand.play(0);
-         setCompCardInPlay(compCard);
-         prize.add(userCard);
-         prize.add(compCard);
+      Card userCard = userHand.play(0);
+      setUserCardInPlay(userCard);
+      Card compCard = computerHand.play(0);
+      setCompCardInPlay(compCard);
+      prize.add(userCard);
+      prize.add(compCard);
 
-         compareCards();
-      }
-      else {
-         // end game state is set
-      }
+      compareCards();
    }
 
    private void setUserCardInPlay(Card card) {

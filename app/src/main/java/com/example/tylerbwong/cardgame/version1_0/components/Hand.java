@@ -5,21 +5,16 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Hand implements Parcelable{
-   // array of cards
-   private int num;
+public class Hand implements Parcelable {
    private ArrayList<Card> hand;
 
    // default hand constructor
    public Hand() {
       hand = new ArrayList<>();
-      num = 0;
    }
 
    // hand constructor
    public Hand(Deck d, int num) {
-      this.num = num;
-
       for (int i = 0; i < num; i++) {
          hand.add(i, d.removeCard());
       }
@@ -34,7 +29,6 @@ public class Hand implements Parcelable{
    public Card draw(Deck d) {
       Card ret = d.removeCard();
       hand.add(ret);
-      num++;
       return ret;
    }
 
@@ -50,7 +44,6 @@ public class Hand implements Parcelable{
       }
       Card ret = hand.remove(c);
       hand.trimToSize();
-      num--;
       return ret;
    }
 
@@ -71,7 +64,7 @@ public class Hand implements Parcelable{
     * Return: a primitive int
     */
    public int getSize() {
-      return num;
+      return hand.size();
    }
 
    /*
@@ -82,11 +75,9 @@ public class Hand implements Parcelable{
     */
    public void addCard(Card c) {
       hand.add(c);
-      num++;
    }
 
    protected Hand(Parcel in) {
-      num = in.readInt();
       if (in.readByte() == 0x01) {
          hand = new ArrayList<Card>();
          in.readList(hand, Card.class.getClassLoader());
@@ -102,7 +93,6 @@ public class Hand implements Parcelable{
 
    @Override
    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeInt(num);
       if (hand == null) {
          dest.writeByte((byte) (0x00));
       } else {
