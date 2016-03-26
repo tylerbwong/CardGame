@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/title_label"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="75dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -23,20 +23,20 @@
         android:orientation="vertical"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="10dp"
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/pile1_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/pile1"
                 android:textSize="16sp" />
 
@@ -44,7 +44,6 @@
                 android:id="@+id/pile1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:scrollbars="horizontal" />
         </LinearLayout>
 
@@ -52,15 +51,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/pile2_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/pile2"
                 android:textSize="16sp" />
 
@@ -68,7 +65,6 @@
                 android:id="@+id/pile2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:scrollbars="horizontal" />
         </LinearLayout>
 
@@ -76,15 +72,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/pile3_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/pile3"
                 android:textSize="16sp" />
 
@@ -92,14 +86,13 @@
                 android:id="@+id/pile3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:scrollbars="horizontal" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="76dp"
         android:id="@+id/button_layout"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
