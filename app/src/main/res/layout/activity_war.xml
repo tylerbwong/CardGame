@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/heart"/>
+            android:src="@mipmap/war"/>
 
         <TextView
             android:id="@+id/comp_rank"
@@ -64,7 +64,7 @@
         android:id="@+id/status_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/war_event1"
+        android:text="@string/war_start"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="40dp"
@@ -80,10 +80,10 @@
         <TextView
             android:id="@+id/hum_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/you_played"
             android:textSize="16sp"
-            android:textAlignment="textEnd"
+            android:gravity="right"
             android:layout_marginRight="20dp"
             android:layout_gravity="center_vertical"/>
 
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/heart"/>
+            android:src="@mipmap/war"/>
 
         <TextView
             android:id="@+id/hum_rank"

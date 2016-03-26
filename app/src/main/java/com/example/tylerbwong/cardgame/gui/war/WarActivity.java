@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +17,15 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.version1_0.war.War;
+import com.example.tylerbwong.cardgame.version1_0.war.WarController;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by tylerbwong on 3/24/16.
  */
-public class WarActivity extends AppCompatActivity {
+public class WarActivity extends AppCompatActivity implements Observer {
    private TextView titleLabel;
    private TextView compCards;
    private TextView compRank;
@@ -34,7 +39,19 @@ public class WarActivity extends AppCompatActivity {
    private Button playButton;
    private Button confirmButton;
 
-   private War war;
+   private WarController controller;
+
+   final static int LAST_CARD = 1;
+   final static SparseArray<Integer> suitMap;
+
+   static {
+      suitMap = new SparseArray<>();
+
+      suitMap.put(0, R.mipmap.spade);
+      suitMap.put(1, R.mipmap.heart);
+      suitMap.put(2, R.mipmap.diamond);
+      suitMap.put(3, R.mipmap.club);
+   }
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +85,9 @@ public class WarActivity extends AppCompatActivity {
       playButton.setTypeface(gotham);
       confirmButton.setTypeface(gotham);
 
-      war = new War();
+      confirmButton.setEnabled(false);
+
+      controller = new WarController(new War(), this);
 
       confirmButton.setEnabled(false);
 
@@ -117,11 +136,100 @@ public class WarActivity extends AppCompatActivity {
    }
 
    public void playAction(View v) {
-
+      controller.handleUserPlay();
+      controller.handleCompPlay();
+      controller.handleCompare();
+      playButton.setEnabled(false);
+      confirmButton.setEnabled(true);
    }
 
    public void confirmAction(View v) {
+      controller.handleConfirm();
+      playButton.setEnabled(true);
+      confirmButton.setEnabled(false);
+   }
 
+   @Override
+   public void update(Observable o, Object arg) {
+      War war = (War) o;
+
+      // update status label
+      switch (war.getCurrentState()) {
+         case HUM_COLLECT:
+            statusLabel.setText("You get " + war.getPrizeSize() + " cards!");
+            break;
+         case COMP_COLLECT:
+            statusLabel.setText("The computer gets " + war.getPrizeSize() + " cards!");
+            break;
+         case WAR:
+            statusLabel.setText(getResources().getText(R.string.war_event));
+            break;
+         case COMP_WIN:
+            statusLabel.setText(getResources().getText(R.string.comp_win));
+            break;
+         case HUM_WIN:
+            statusLabel.setText(getResources().getText(R.string.hum_win));
+            break;
+         case HUM_TURN:
+            statusLabel.setText(getResources().getText(R.string.hum_turn));
+            break;
+         default:
+            statusLabel.setText(getResources().getText(R.string.war_start));
+            break;
+      }
+
+      // update cards left labels
+      String compCardsLeft, humCardsLeft;
+      int compScore = war.getCompScore();
+      int humScore = war.getHumScore();
+
+      if (compScore != LAST_CARD) {
+         compCardsLeft = getResources().getText(R.string.cards_left).toString();
+      }
+      else {
+         compCardsLeft = getResources().getText(R.string.card_left).toString();
+      }
+
+      if (humScore != LAST_CARD) {
+         humCardsLeft = getResources().getText(R.string.cards_left).toString();
+      }
+      else {
+         humCardsLeft = getResources().getText(R.string.card_left).toString();
+      }
+
+      compCards.setText(war.getCompScore() + " " + compCardsLeft);
+      humCards.setText(war.getHumScore() + " " + humCardsLeft);
+
+      // update cards played
+      compSuit.setImageResource(suitMap.get(war.getCompCardInPlay().getSuitNum()));
+      humSuit.setImageResource(suitMap.get(war.getUserCardInPlay().getSuitNum()));
+
+      compRank.setText(convertRank(war.getCompCardInPlay().getNum()));
+      humRank.setText(convertRank(war.getUserCardInPlay().getNum()));
+   }
+
+   private String convertRank(int rank) {
+      String result = "";
+      if (rank >= 11 && rank <= 14) {
+         switch (rank) {
+            case 11:
+               result = "J";
+               break;
+            case 12:
+               result = "Q";
+               break;
+            case 13:
+               result = "K";
+               break;
+            default:
+               result = "A";
+               break;
+         }
+      }
+      else {
+         result = rank + "";
+      }
+      return result;
    }
 
    @Override

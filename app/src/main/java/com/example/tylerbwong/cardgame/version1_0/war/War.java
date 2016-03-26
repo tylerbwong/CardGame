@@ -6,18 +6,36 @@ import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 
 import java.util.*;
 
-public class War {
+public class War extends Observable {
    private Deck deck;
    private Hand userHand;
    private Hand computerHand;
    private ArrayList<Card> prize;
+   private Card userCardInPlay;
+   private Card compCardInPlay;
+   private int prizeSize;
+   public GameState currentState;
+   public GameState previousState;
+
+   public enum GameState {
+      COMP_COLLECT,
+      HUM_COLLECT,
+      WAR,
+      HUM_TURN,
+      COMPARING,
+      COMP_WIN,
+      HUM_WIN,
+   }
 
    // game constructor
    public War() {
+      // create deck and shuffle
       deck = new Deck();
       for (int i = 0; i < 2; i++) {
          deck.shuffle();
       }
+
+      // create new hands for user and comp
       userHand = new Hand();
       computerHand = new Hand();
 
@@ -25,7 +43,65 @@ public class War {
          userHand.draw(deck);
          computerHand.draw(deck);
       }
+
+      // init prize ArrayList
       prize = new ArrayList<>();
+
+      // set GameState
+      currentState = GameState.HUM_TURN;
+      previousState = null;
+   }
+
+   public int getPrizeSize() {
+      return prizeSize;
+   }
+
+   public Card getUserCardInPlay() {
+      return userCardInPlay;
+   }
+
+   public Card getCompCardInPlay() {
+      return compCardInPlay;
+   }
+
+   /**
+    * Reverts to previous state
+    */
+   public void revertState() {
+      currentState = previousState;
+
+      setChanged();
+      notifyObservers();
+   }
+
+   /**
+    * Gets the currentState
+    * @return the currentState
+    */
+   public GameState getCurrentState() {
+      return currentState;
+   }
+
+   /**
+    * Sets the current state to specified value
+    * and saves old state to previousState
+    * @param state - state for currentState
+    *              to be set to
+    */
+   public void setCurrentState(GameState state) {
+      previousState = currentState;
+      currentState = state;
+
+      setChanged();
+      notifyObservers();
+   }
+
+   /**
+    * Gets the previousState
+    * @return the previousState
+    */
+   public GameState getPreviousState() {
+      return previousState;
    }
 
    /*
@@ -58,18 +134,18 @@ public class War {
       return computerHand;
    }
 
+   public void keepScore() {}
+
    /*
     * Function: userPlay
     * Description: plays a card from user's hand
     * Parameters: N/A
     * Return: a card data type
     */
-   private Card userPlay() {
+   public void userPlay() {
       Card play = userHand.play(0);
-      System.out.println("___________________________________");
-      System.out.println("");
-      System.out.println("You played " + play.toString());
-      return play;
+      setUserCardInPlay(play);
+      prize.add(play);
    }
 
    /*
@@ -78,13 +154,22 @@ public class War {
     * Parameters: N/A
     * Return: a card data type
     */
-   private Card computerPlay() {
+   public void computerPlay() {
       Card play = computerHand.play(0);
-      System.out.println("");
-      System.out.println("The computer played " + play.toString());
-      System.out.println("___________________________________");
-      System.out.println("");
-      return play;
+      setCompCardInPlay(play);
+      prize.add(play);
+      setCurrentState(GameState.COMPARING);
+
+      setChanged();
+      notifyObservers();
+   }
+
+   private void setUserCardInPlay(Card card) {
+      userCardInPlay = card;
+   }
+
+   private void setCompCardInPlay(Card card) {
+      compCardInPlay = card;
    }
 
    /*
@@ -94,46 +179,43 @@ public class War {
     * Return: N/A
     */
    public void compareCards() {
-      // have user and computer play cards
-      Card player = userPlay();
-      Card comp = computerPlay();
-
       // assign number values to compare
-      int card1 = player.getNum();
-      int card2 = comp.getNum();
+      int card1 = userCardInPlay.getNum();
+      int card2 = compCardInPlay.getNum();
 
-      // add played cards to prize pool
-      prize.add(player);
-      prize.add(comp);
-      int size = prize.size();
+      prizeSize = prize.size();
 
       // if player wins
       if (card1 > card2) {
          // add cards to player hand from prize
-         for (int i = 0; i < size; i++) {
+         for (int i = 0; i < prizeSize; i++) {
             userHand.addCard(prize.remove(0));
          }
-         System.out.println("The cards are yours!");
+         setCurrentState(GameState.HUM_COLLECT);
+
+         setChanged();
+         notifyObservers();
       }
 
       // if computer wins
       if (card1 < card2) {
          // add cards to computer hand from prize
-         for (int j = 0; j < size; j++) {
+         for (int j = 0; j < prizeSize; j++) {
             computerHand.addCard(prize.remove(0));
          }
-         System.out.println("You lost the cards.");
+         setCurrentState(GameState.COMP_COLLECT);
+
+         setChanged();
+         notifyObservers();
       }
 
       // if war
       if (card1 == card2) {
-         System.out.println("___________________________________");
-         System.out.println("");
-         System.out.println("\\         / /\\   |\\  |");
-         System.out.println(" \\  / \\  / /__\\  |/  |");
-         System.out.println("  \\/   \\/ /    \\ |\\  o");
-         System.out.println("___________________________________");
-         System.out.println("");
+         setCurrentState(GameState.WAR);
+
+         setChanged();
+         notifyObservers();
+
          int sizeUser = 3;
          int sizeComp = 3;
 
@@ -164,16 +246,20 @@ public class War {
 
    /*
     * Function: keepScore
-    * Description: keeps the score of the game
+    * Description: gets the score of the human
     * Parameters: N/A
-    * Return: N/A
+    * Return: the human score
     */
-   public void keepScore() {
-      System.out.println("Player: " + userHand.getSize());
-      System.out.println("Computer: " + computerHand.getSize());
-      System.out.println("___________________________________");
-      System.out.println("");
-      System.out.println("Play another! (press 1)");
+   public int getHumScore() {
+      return userHand.getSize();
+   }
+
+   /**
+    * Gets score of the computer
+    * @return the computer score
+    */
+   public int getCompScore() {
+      return computerHand.getSize();
    }
 
    /* Function: endGame
@@ -182,15 +268,16 @@ public class War {
     * Return: a boolean data type
     */
    public boolean endGame() {
+      boolean isEnd = false;
       if (userHand.getSize() == 0) {
-         System.out.println("The computer wins! :(");
-         return true;
+         setCurrentState(GameState.COMP_WIN);
+         isEnd = true;
       }
-      if (computerHand.getSize() == 0) {
-         System.out.println("You win! :)");
-         return true;
+      else if (computerHand.getSize() == 0) {
+         setCurrentState(GameState.HUM_WIN);
+         isEnd = true;
       }
-      return false;
+      return isEnd;
    }
 }
 
