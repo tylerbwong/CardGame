@@ -136,9 +136,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
    }
 
    public void playAction(View v) {
-      controller.handleUserPlay();
-      controller.handleCompPlay();
-      controller.handleCompare();
+      controller.handleTurn();
       playButton.setEnabled(false);
       confirmButton.setEnabled(true);
    }
@@ -160,9 +158,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
             break;
          case COMP_COLLECT:
             statusLabel.setText("The computer gets " + war.getPrizeSize() + " cards!");
-            break;
-         case WAR:
-            statusLabel.setText(getResources().getText(R.string.war_event));
             break;
          case COMP_WIN:
             statusLabel.setText(getResources().getText(R.string.comp_win));

@@ -16,16 +16,8 @@ public class WarController {
       war.addObserver(activity);
    }
 
-   public void handleUserPlay() {
-      war.userPlay();
-   }
-
-   public void handleCompPlay() {
-      war.computerPlay();
-   }
-
-   public void handleCompare() {
-      war.compareCards();
+   public void handleTurn() {
+      war.doTurn();
    }
 
    public void handleConfirm() {

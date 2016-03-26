@@ -20,9 +20,7 @@ public class War extends Observable {
    public enum GameState {
       COMP_COLLECT,
       HUM_COLLECT,
-      WAR,
       HUM_TURN,
-      COMPARING,
       COMP_WIN,
       HUM_WIN,
    }
@@ -136,32 +134,15 @@ public class War extends Observable {
 
    public void keepScore() {}
 
-   /*
-    * Function: userPlay
-    * Description: plays a card from user's hand
-    * Parameters: N/A
-    * Return: a card data type
-    */
-   public void userPlay() {
-      Card play = userHand.play(0);
-      setUserCardInPlay(play);
-      prize.add(play);
-   }
+   public void doTurn() {
+      Card userCard = userHand.play(0);
+      setUserCardInPlay(userCard);
+      Card compCard = computerHand.play(0);
+      setCompCardInPlay(compCard);
+      prize.add(userCard);
+      prize.add(compCard);
 
-   /*
-    * Function: computerPlay
-    * Description: plays a card from computer's hand
-    * Parameters: N/A
-    * Return: a card data type
-    */
-   public void computerPlay() {
-      Card play = computerHand.play(0);
-      setCompCardInPlay(play);
-      prize.add(play);
-      setCurrentState(GameState.COMPARING);
-
-      setChanged();
-      notifyObservers();
+      compareCards();
    }
 
    private void setUserCardInPlay(Card card) {
@@ -198,7 +179,7 @@ public class War extends Observable {
       }
 
       // if computer wins
-      if (card1 < card2) {
+      else if (card1 < card2) {
          // add cards to computer hand from prize
          for (int j = 0; j < prizeSize; j++) {
             computerHand.addCard(prize.remove(0));
@@ -210,12 +191,7 @@ public class War extends Observable {
       }
 
       // if war
-      if (card1 == card2) {
-         setCurrentState(GameState.WAR);
-
-         setChanged();
-         notifyObservers();
-
+      else {
          int sizeUser = 3;
          int sizeComp = 3;
 
