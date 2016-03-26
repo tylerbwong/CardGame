@@ -138,14 +138,19 @@ public class War extends Observable {
    }
 
    public void doTurn() {
-      Card userCard = userHand.play(0);
-      setUserCardInPlay(userCard);
-      Card compCard = computerHand.play(0);
-      setCompCardInPlay(compCard);
-      prize.add(userCard);
-      prize.add(compCard);
+      if (!endGame()) {
+         Card userCard = userHand.play(0);
+         setUserCardInPlay(userCard);
+         Card compCard = computerHand.play(0);
+         setCompCardInPlay(compCard);
+         prize.add(userCard);
+         prize.add(compCard);
 
-      compareCards();
+         compareCards();
+      }
+      else {
+         // end game state is set
+      }
    }
 
    private void setUserCardInPlay(Card card) {
