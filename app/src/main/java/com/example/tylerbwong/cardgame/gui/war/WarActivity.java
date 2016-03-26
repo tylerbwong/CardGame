@@ -37,7 +37,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
    private ImageView compSuit;
    private ImageView humSuit;
    private Button playButton;
-   private Button confirmButton;
 
    private WarController controller;
 
@@ -72,7 +71,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
       compSuit = (ImageView) findViewById(R.id.comp_suit);
       humSuit = (ImageView) findViewById(R.id.hum_suit);
       playButton = (Button) findViewById(R.id.play_button);
-      confirmButton = (Button) findViewById(R.id.confirm_button);
 
       titleLabel.setTypeface(gotham);
       compCards.setTypeface(gotham);
@@ -83,13 +81,8 @@ public class WarActivity extends AppCompatActivity implements Observer {
       compLabel.setTypeface(gotham);
       humLabel.setTypeface(gotham);
       playButton.setTypeface(gotham);
-      confirmButton.setTypeface(gotham);
-
-      confirmButton.setEnabled(false);
 
       controller = new WarController(new War(), this);
-
-      confirmButton.setEnabled(false);
 
       displayAlertDialog();
    }
@@ -136,15 +129,13 @@ public class WarActivity extends AppCompatActivity implements Observer {
    }
 
    public void playAction(View v) {
-      controller.handleTurn();
-      playButton.setEnabled(false);
-      confirmButton.setEnabled(true);
-   }
-
-   public void confirmAction(View v) {
-      controller.handleConfirm();
-      playButton.setEnabled(true);
-      confirmButton.setEnabled(false);
+      if (playButton.getText().toString().equals(getResources().getText(R.string.play_card).toString())) {
+         controller.handleTurn();
+         playButton.setText(getResources().getText(R.string.confirm).toString());
+      } else {
+         controller.handleConfirm();
+         playButton.setText(getResources().getText(R.string.play_card).toString());
+      }
    }
 
    @Override

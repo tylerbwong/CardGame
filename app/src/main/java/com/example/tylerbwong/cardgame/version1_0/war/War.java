@@ -67,9 +67,6 @@ public class War extends Observable {
     */
    public void revertState() {
       currentState = previousState;
-
-      setChanged();
-      notifyObservers();
    }
 
    /**
@@ -132,7 +129,13 @@ public class War extends Observable {
       return computerHand;
    }
 
-   public void keepScore() {}
+   public void keepScore() {
+      System.out.println("Player: " + userHand.getSize());
+      System.out.println("Computer: " + computerHand.getSize());
+      System.out.println("___________________________________");
+      System.out.println("");
+      System.out.println("Play another! (press 1)");
+   }
 
    public void doTurn() {
       Card userCard = userHand.play(0);
@@ -173,9 +176,6 @@ public class War extends Observable {
             userHand.addCard(prize.remove(0));
          }
          setCurrentState(GameState.HUM_COLLECT);
-
-         setChanged();
-         notifyObservers();
       }
 
       // if computer wins
@@ -185,9 +185,6 @@ public class War extends Observable {
             computerHand.addCard(prize.remove(0));
          }
          setCurrentState(GameState.COMP_COLLECT);
-
-         setChanged();
-         notifyObservers();
       }
 
       // if war

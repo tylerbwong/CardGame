@@ -122,7 +122,7 @@
         <Button
             android:id="@+id/play_button"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:background="@color/white"
             android:onClick="playAction"
             android:stateListAnimator="@anim/button_animator"
@@ -130,15 +130,5 @@
             android:textColor="@color/colorAccent"
             android:textSize="14sp"/>
 
-        <Button
-            android:id="@+id/confirm_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:onClick="confirmAction"
-            android:stateListAnimator="@anim/button_animator"
-            android:text="@string/confirm"
-            android:textColor="@color/colorAccent"
-            android:textSize="14sp"/>
     </LinearLayout>
 </LinearLayout>
