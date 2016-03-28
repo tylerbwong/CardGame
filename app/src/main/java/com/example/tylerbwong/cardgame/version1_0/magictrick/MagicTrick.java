@@ -25,6 +25,7 @@ public class MagicTrick implements Parcelable{
 
    final static int NUM_CARDS = 27;
    final static int STAGES = 3;
+   final static int LAST_STAGE = 2;
    final static int NUM_PILES = 3;
    final static int PILE_SIZE = 9;
 
@@ -87,7 +88,7 @@ public class MagicTrick implements Parcelable{
    }
 
    public boolean isLastStage() {
-      return getStage() == 2;
+      return getStage() == LAST_STAGE;
    }
 
    public void setCard(int choice) {
