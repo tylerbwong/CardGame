@@ -1,103 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical"
-              android:padding="@dimen/activity_vertical_margin">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:text="@string/magic_trick"
         android:textColor="@color/colorAccent"
-        android:textSize="45sp"/>
-
-    <TextView
-        android:id="@+id/subtitle_label1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/prompt1"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"/>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <RadioButton
-            android:id="@+id/spade_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@mipmap/spade"
-            android:onClick="submitButtonEnabled"/>
-
-        <RadioButton
-            android:id="@+id/heart_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@mipmap/heart"
-            android:onClick="submitButtonEnabled"/>
-
-        <RadioButton
-            android:id="@+id/club_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@mipmap/club"
-            android:onClick="submitButtonEnabled"/>
-
-        <RadioButton
-            android:id="@+id/diamond_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@mipmap/diamond"
-            android:onClick="submitButtonEnabled"/>
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/subtitle_label2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:textSize="45sp"
         android:layout_marginTop="20dp"
-        android:text="@string/prompt2"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/button_layout"
+        android:layout_below="@id/title_label"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/subtitle_label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/prompt1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp"
-        android:background="@color/white"
-        android:onClick="submitAction"
-        android:stateListAnimator="@anim/button_animator"
-        android:text="@string/submit"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="250dp"
+            <RadioButton
+                android:id="@+id/spade_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@mipmap/spade"
+                android:onClick="submitButtonEnabled" />
+
+            <RadioButton
+                android:id="@+id/heart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@mipmap/heart"
+                android:onClick="submitButtonEnabled" />
+
+            <RadioButton
+                android:id="@+id/club_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@mipmap/club"
+                android:onClick="submitButtonEnabled" />
+
+            <RadioButton
+                android:id="@+id/diamond_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@mipmap/diamond"
+                android:onClick="submitButtonEnabled" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/subtitle_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="@string/prompt2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        android:onClick="backAction"
-        android:stateListAnimator="@anim/button_animator"
-        android:text="@string/back"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"/>
-</LinearLayout>
+        android:id="@+id/button_layout"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:onClick="submitAction"
+            android:stateListAnimator="@anim/button_animator"
+            android:text="@string/submit"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:onClick="backAction"
+            android:stateListAnimator="@anim/button_animator"
+            android:text="@string/back"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

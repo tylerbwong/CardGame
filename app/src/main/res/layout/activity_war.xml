@@ -26,13 +26,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/play_button"
+        android:layout_above="@+id/button_layout"
         android:layout_below="@id/title_image">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@id/status_label"
+            android:layout_above="@+id/status_label"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="vertical">
@@ -140,19 +140,27 @@
         </LinearLayout>
     </RelativeLayout>
 
-
-    <Button
-        android:id="@+id/play_button"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="70dp"
+        android:id="@+id/button_layout"
+        android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        android:onClick="playAction"
-        android:stateListAnimator="@anim/button_animator"
-        android:text="@string/play_card"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:onClick="playAction"
+            android:stateListAnimator="@anim/button_animator"
+            android:text="@string/play_card"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
 
 </RelativeLayout>
