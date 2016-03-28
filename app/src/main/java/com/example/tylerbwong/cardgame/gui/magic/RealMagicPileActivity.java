@@ -16,6 +16,7 @@ import com.example.tylerbwong.cardgame.gui.adapters.PileAdapter;
 import com.example.tylerbwong.cardgame.gui.magic.MagicResultActivity;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.magictrick.MagicTrick;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
  * Created by tylerbwong on 3/23/16.
@@ -62,7 +63,7 @@ public class RealMagicPileActivity extends AppCompatActivity {
 
       setFullscreen();
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       pile1Label = (TextView) findViewById(R.id.pile1_label);
@@ -108,7 +109,7 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    private void makePileView() {
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       trick.dealToPiles();
 
       piles = trick.getPiles();

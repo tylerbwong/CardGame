@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/title_label"
@@ -13,87 +13,87 @@
         android:gravity="center"
         android:text="@string/pile_1"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title_label"
         android:layout_above="@+id/button_layout"
+        android:layout_below="@id/title_label"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center">
+        android:paddingRight="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/pile1_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pile1"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/pile1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal" />
+                android:scrollbars="horizontal"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/pile2_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pile2"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/pile2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal" />
+                android:scrollbars="horizontal"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/pile3_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pile3"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/pile3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal" />
+                android:scrollbars="horizontal"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/button_layout"
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:id="@+id/button_layout"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
@@ -110,7 +110,7 @@
             android:onClick="pile1Clicked"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/pile1"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/pile2_button"
@@ -121,7 +121,7 @@
             android:onClick="pile2Clicked"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/pile2"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/pile3_button"
@@ -134,6 +134,6 @@
             android:onClick="pile3Clicked"
             android:stateListAnimator="@anim/button_animator"
             android:text="@string/pile3"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccent"/>
     </LinearLayout>
 </RelativeLayout>

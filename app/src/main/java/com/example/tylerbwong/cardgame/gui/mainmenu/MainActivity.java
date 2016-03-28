@@ -12,6 +12,7 @@ import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.magic.MagicActivity;
 import com.example.tylerbwong.cardgame.gui.magic.RealMagicActivity;
 import com.example.tylerbwong.cardgame.gui.war.WarActivity;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 public class MainActivity extends AppCompatActivity {
    private TextView titleLabel;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
       setContentView(R.layout.activity_main);
       setFullscreen();
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       // initialize TextView
       titleLabel = (TextView) findViewById(R.id.title_label);

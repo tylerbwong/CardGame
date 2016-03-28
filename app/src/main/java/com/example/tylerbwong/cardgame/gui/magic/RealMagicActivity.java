@@ -16,6 +16,7 @@ import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import com.example.tylerbwong.cardgame.version1_0.magictrick.MagicTrick;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
  * Created by tylerbwong on 3/23/16.
@@ -36,7 +37,7 @@ public class RealMagicActivity extends AppCompatActivity {
       setContentView(R.layout.activity_real_magic);
       setFullscreen();
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       subtitleLabel = (TextView) findViewById(R.id.subtitle_label);

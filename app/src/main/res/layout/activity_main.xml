@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_vertical_margin"
-    tools:context=".gui.mainmenu.MainActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="@dimen/activity_vertical_margin"
+              tools:context=".gui.mainmenu.MainActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:transitionName="@string/logo_transition">
 
         <TextView
@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textColor="@color/colorAccent"
-            android:textSize="50sp" />
+            android:textSize="50sp"/>
 
         <ImageView
             android:layout_width="114dp"
             android:layout_height="108dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/spade" />
+            android:src="@mipmap/spade"/>
     </LinearLayout>
 
     <Button
@@ -40,7 +40,7 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/crazy_eight"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/war"
@@ -51,7 +51,7 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/war"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/black_jack"
@@ -62,7 +62,7 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/black_jack"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/magic_trick"
@@ -73,7 +73,7 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/magic_trick"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/real_magic_trick"
@@ -84,7 +84,7 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/real_magic_trick"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <Button
         android:id="@+id/exit"
@@ -95,5 +95,5 @@
         android:stateListAnimator="@anim/button_animator"
         android:text="@string/exit"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 </LinearLayout>

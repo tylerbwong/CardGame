@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
+
 import java.util.List;
 
 /**
@@ -16,8 +18,7 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
 
    private View decorView;
 
-   Typeface font = Typeface.createFromAsset(getContext().getAssets(),
-         "font/gotham-light.ttf");
+   Typeface gotham = Typefaces.get(getContext(), "font/gotham-light.ttf");
 
    public MySpinnerAdapter(View decorView, Context context, int resource, List<String> items) {
       super(context, resource, items);
@@ -27,7 +28,7 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
    @Override
    public View getView(int position, View convertView, ViewGroup parent) {
       TextView view = (TextView) super.getView(position, convertView, parent);
-      view.setTypeface(font);
+      view.setTypeface(gotham);
       setFullscreen();
       return view;
    }
@@ -35,7 +36,7 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
    @Override
    public View getDropDownView(int position, View convertView, ViewGroup parent) {
       TextView view = (TextView) super.getDropDownView(position, convertView, parent);
-      view.setTypeface(font);
+      view.setTypeface(gotham);
       setFullscreen();
       return view;
    }

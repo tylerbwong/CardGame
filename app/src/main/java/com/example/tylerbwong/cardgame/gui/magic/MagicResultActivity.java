@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.R;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
  * Created by tylerbwong on 3/22/16.
@@ -39,7 +40,7 @@ public class MagicResultActivity extends AppCompatActivity {
       setContentView(R.layout.activity_magic_result);
       setFullscreen();
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       suitTop = (ImageView) findViewById(R.id.suit_top);
       suitMid = (ImageView) findViewById(R.id.suit_mid);

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
  * Created by brittanyberlanga on 3/21/16.
@@ -25,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
       setContentView(R.layout.splash_activity);
       setFullscreen();
       TextView title = (TextView) findViewById(R.id.title_label);
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       title.setTypeface(gotham);
 
        new Handler().postDelayed(new Runnable() {

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.gui.adapters.MySpinnerAdapter;
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.version1_0.magictrick.MagicTrick;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 import java.util.Arrays;
 
@@ -39,7 +40,7 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
 
       setFullscreen();
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       backButton = (Button) findViewById(R.id.back);

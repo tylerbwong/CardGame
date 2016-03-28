@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
+import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 import com.example.tylerbwong.cardgame.version1_0.war.War;
 import com.example.tylerbwong.cardgame.version1_0.war.WarController;
 
@@ -58,7 +59,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_war);
 
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
@@ -112,7 +113,8 @@ public class WarActivity extends AppCompatActivity implements Observer {
       alert.setView(alertLayout);
       AlertDialog dialog = alert.create();
       dialog.create();
-      Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
+
+      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       Button noButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
       noButton.setTypeface(gotham);
       Button yesButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
