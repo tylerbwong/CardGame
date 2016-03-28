@@ -23,9 +23,12 @@ public class MainActivity extends AppCompatActivity {
    private Button realMagicTrick;
    private Button exit;
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       boolean logoTransition = getIntent().getBooleanExtra("logo_transition", false);
       if (logoTransition) {
@@ -34,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
       setContentView(R.layout.activity_main);
       setFullscreen();
-
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
       // initialize TextView
       titleLabel = (TextView) findViewById(R.id.title_label);

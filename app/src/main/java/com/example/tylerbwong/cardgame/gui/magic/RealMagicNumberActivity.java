@@ -33,14 +33,16 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
 
    private int input = 0;
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_favorite);
 
-      setFullscreen();
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+      setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       backButton = (Button) findViewById(R.id.back);

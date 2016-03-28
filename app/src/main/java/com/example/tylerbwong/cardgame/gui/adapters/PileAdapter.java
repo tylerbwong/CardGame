@@ -16,11 +16,6 @@ public class PileAdapter extends RecyclerView.Adapter<PileViewHolder> {
    private Typeface typeface;
    public static SparseArray<Integer> suitMap;
 
-   final static String ACE = "Ace";
-   final static String JACK = "Jack";
-   final static String QUEEN = "Queen";
-   final static String KING = "King";
-
    static {
       suitMap = new SparseArray<>();
 

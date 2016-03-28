@@ -34,13 +34,16 @@ public class MagicResultActivity extends AppCompatActivity {
    final static String QUEEN = "Queen";
    final static String KING = "King";
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_magic_result);
-      setFullscreen();
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
+
+      setFullscreen();
 
       suitTop = (ImageView) findViewById(R.id.suit_top);
       suitMid = (ImageView) findViewById(R.id.suit_mid);

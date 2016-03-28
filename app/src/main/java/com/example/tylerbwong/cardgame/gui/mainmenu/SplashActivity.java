@@ -19,14 +19,18 @@ import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 public class SplashActivity extends AppCompatActivity {
    private static final int SPLASH_DISPLAY_LENGTH = 1000;
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-
       setContentView(R.layout.splash_activity);
+
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
+
       setFullscreen();
+
       TextView title = (TextView) findViewById(R.id.title_label);
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       title.setTypeface(gotham);
 
        new Handler().postDelayed(new Runnable() {

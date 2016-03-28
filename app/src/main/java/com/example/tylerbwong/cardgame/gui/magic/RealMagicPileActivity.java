@@ -56,14 +56,16 @@ public class RealMagicPileActivity extends AppCompatActivity {
       titleStages.put(2, R.string.pile_3);
    }
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_pile);
 
-      setFullscreen();
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+      setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       pile1Label = (TextView) findViewById(R.id.pile1_label);
@@ -109,7 +111,6 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    private void makePileView() {
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       trick.dealToPiles();
 
       piles = trick.getPiles();

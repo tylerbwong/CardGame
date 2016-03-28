@@ -18,11 +18,12 @@ public class MySpinnerAdapter extends ArrayAdapter<String> {
 
    private View decorView;
 
-   Typeface gotham = Typefaces.get(getContext(), "font/gotham-light.ttf");
+   Typeface gotham;
 
    public MySpinnerAdapter(View decorView, Context context, int resource, List<String> items) {
       super(context, resource, items);
       this.decorView = decorView;
+      gotham = Typefaces.get(getContext(), "font/gotham-light.ttf");
    }
 
    @Override

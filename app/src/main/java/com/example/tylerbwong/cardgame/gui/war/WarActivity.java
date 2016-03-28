@@ -45,6 +45,8 @@ public class WarActivity extends AppCompatActivity implements Observer {
    final static int MIN_PRIZE = 2;
    final static SparseArray<Integer> suitMap;
 
+   Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+
    static {
       suitMap = new SparseArray<>();
 
@@ -59,7 +61,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_war);
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
@@ -114,7 +115,6 @@ public class WarActivity extends AppCompatActivity implements Observer {
       AlertDialog dialog = alert.create();
       dialog.create();
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
       Button noButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
       noButton.setTypeface(gotham);
       Button yesButton = dialog.getButton(Dialog.BUTTON_POSITIVE);

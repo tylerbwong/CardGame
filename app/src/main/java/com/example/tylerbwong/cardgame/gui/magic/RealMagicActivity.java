@@ -31,13 +31,16 @@ public class RealMagicActivity extends AppCompatActivity {
    private Card[] trickDeck;
    private boolean restart = false;
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_real_magic);
-      setFullscreen();
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
+
+      setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       subtitleLabel = (TextView) findViewById(R.id.subtitle_label);

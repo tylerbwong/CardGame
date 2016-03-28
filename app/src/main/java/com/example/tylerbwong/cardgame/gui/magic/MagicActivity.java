@@ -23,15 +23,6 @@ import java.util.Arrays;
  * Created by tylerbwong on 3/21/16.
  */
 public class MagicActivity extends AppCompatActivity implements OnItemSelectedListener {
-   final static int ACE = 1;
-   final static int JACK = 11;
-   final static int QUEEN = 12;
-   final static int KING = 13;
-   final static int SPADE = 0;
-   final static int HEART = 1;
-   final static int CLUB = 2;
-   final static int DIAMOND = 3;
-
    private TextView titleLabel;
    private TextView subtitleLabel1;
    private TextView subtitleLabel2;
@@ -48,13 +39,16 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
    final static int NUM_SUITS = 4;
 
+   Typeface gotham;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_magic);
-      setFullscreen();
 
-      Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
+      gotham = Typefaces.get(this, "font/gotham-light.ttf");
+
+      setFullscreen();
 
       titleLabel = (TextView) findViewById(R.id.title_label);
       subtitleLabel1 = (TextView) findViewById(R.id.subtitle_label1);
