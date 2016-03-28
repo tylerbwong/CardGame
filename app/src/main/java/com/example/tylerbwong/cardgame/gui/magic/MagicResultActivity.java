@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.R;
+import com.example.tylerbwong.cardgame.gui.realmagic.RealMagicActivity;
 
 /**
  * Created by tylerbwong on 3/22/16.
@@ -26,6 +27,7 @@ public class MagicResultActivity extends AppCompatActivity {
    private TextView title;
    private Button backMenu;
    private Button again;
+   private boolean real;
 
    final static String ACE = "Ace";
    final static String JACK = "Jack";
@@ -57,6 +59,7 @@ public class MagicResultActivity extends AppCompatActivity {
       rankBot.setTypeface(gotham);
 
       Intent startIntent = getIntent();
+      real = startIntent.getBooleanExtra("real_magic", false);
       suitIdent = startIntent.getIntExtra("suit", 1);
       rankIdent = startIntent.getStringExtra("rank");
 
@@ -75,14 +78,14 @@ public class MagicResultActivity extends AppCompatActivity {
          suitBot.setImageResource(R.mipmap.heart);
       }
       else if (suitIdent == 2) {
-         suitTop.setImageResource(R.mipmap.club);
-         suitMid.setImageResource(R.mipmap.club);
-         suitBot.setImageResource(R.mipmap.club);
-      }
-      else {
          suitTop.setImageResource(R.mipmap.diamond);
          suitMid.setImageResource(R.mipmap.diamond);
          suitBot.setImageResource(R.mipmap.diamond);
+      }
+      else {
+         suitTop.setImageResource(R.mipmap.club);
+         suitMid.setImageResource(R.mipmap.club);
+         suitBot.setImageResource(R.mipmap.club);
       }
 
       if (rankIdent.equals(ACE) || rankIdent.equals(JACK) || rankIdent.equals(QUEEN) ||
@@ -118,8 +121,15 @@ public class MagicResultActivity extends AppCompatActivity {
    }
 
    public void againAction(View v) {
-      Intent againIntent = new Intent(this, MagicActivity.class);
-      startActivity(againIntent);
+      if (real) {
+         Intent againIntent = new Intent(this, RealMagicActivity.class);
+         startActivity(againIntent);
+      }
+      else {
+         Intent againIntent = new Intent(this, MagicActivity.class);
+         startActivity(againIntent);
+      }
+
    }
 
    @Override

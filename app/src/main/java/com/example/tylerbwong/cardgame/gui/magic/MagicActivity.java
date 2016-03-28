@@ -67,8 +67,8 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
       suits[0] = spadeButton;
       suits[1] = heartButton;
-      suits[2] = clubButton;
-      suits[3] = diamondButton;
+      suits[2] = diamondButton;
+      suits[3] = clubButton;
 
       submitButton = (Button) findViewById(R.id.submit);
       submitButton.setEnabled(false);
@@ -104,6 +104,7 @@ public class MagicActivity extends AppCompatActivity implements OnItemSelectedLi
 
    public void submitAction(View v) {
       Intent submitIntent = new Intent(this, MagicResultActivity.class);
+      submitIntent.putExtra("real_magic", false);
       submitIntent.putExtra("suit", suitChoice);
       submitIntent.putExtra("rank", rank);
       startActivity(submitIntent);

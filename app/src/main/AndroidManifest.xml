@@ -34,9 +34,6 @@
         <activity android:name=".gui.realmagic.RealMagicPileActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".gui.realmagic.RealMagicResultActivity"
-                  android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
         <activity android:name=".gui.war.WarActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>

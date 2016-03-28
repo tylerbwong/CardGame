@@ -11,8 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.tylerbwong.cardgame.gui.adapters.PileAdapter;
 import com.example.tylerbwong.cardgame.R;
+import com.example.tylerbwong.cardgame.gui.adapters.PileAdapter;
+import com.example.tylerbwong.cardgame.gui.magic.MagicResultActivity;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.magictrick.MagicTrick;
 
@@ -175,9 +176,36 @@ public class RealMagicPileActivity extends AppCompatActivity {
    }
 
    private void startSolutionActivity() {
-      Intent solIntent = new Intent(this, RealMagicResultActivity.class);
-      solIntent.putExtra("solution", trick.getSolution());
+      Intent solIntent = new Intent(this, MagicResultActivity.class);
+      Card card = trick.getSolution();
+      solIntent.putExtra("real_magic", true);
+      solIntent.putExtra("suit", card.getSuitNum());
+      solIntent.putExtra("rank", getStringRank(card.getNum()));
       startActivity(solIntent);
+   }
+
+   private String getStringRank(int temp) {
+      String result;
+      if (temp >= 11 && temp <= 14) {
+         switch (temp) {
+            case 11:
+               result = "Jack";
+               break;
+            case 12:
+               result = "Queen";
+               break;
+            case 13:
+               result = "King";
+               break;
+            default:
+               result = "Ace";
+               break;
+         }
+      }
+      else {
+         result = temp + "";
+      }
+      return result;
    }
 
    @Override
