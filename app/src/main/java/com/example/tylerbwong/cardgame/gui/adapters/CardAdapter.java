@@ -55,7 +55,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    public void onBindViewHolder(CardViewHolder holder, int position) {
       // - get element from your dataset at this position
       // - replace the contents of the view with that element
-      holder.rank.setText(cards[position].toString());
+      holder.rankTop.setText(cards[position].toString());
+      holder.rankBot.setText(cards[position].toString());
       int temp = cards[position].getNum();
       String result = "";
       if (temp >= 11 && temp <= 14) {
@@ -77,10 +78,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
       else {
          result = temp + "";
       }
-      holder.smallRank.setText(result);
-      holder.suit.setImageResource(suitMap.get(cards[position].getSuitNum()));
-      holder.rank.setTypeface(typeface);
-      holder.smallRank.setTypeface(typeface);
+      holder.rankTop.setText(result);
+      holder.rankBot.setText(result);
+      holder.suitTop.setImageResource(suitMap.get(cards[position].getSuitNum()));
+      holder.suitMid.setImageResource(suitMap.get(cards[position].getSuitNum()));
+      holder.suitBot.setImageResource(suitMap.get(cards[position].getSuitNum()));
+      holder.rankTop.setTypeface(typeface);
+      holder.rankBot.setTypeface(typeface);
    }
 
    // Return the size of your dataset (invoked by the layout manager)

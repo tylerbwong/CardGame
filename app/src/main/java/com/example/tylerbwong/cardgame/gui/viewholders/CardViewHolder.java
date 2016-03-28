@@ -11,15 +11,20 @@ import com.example.tylerbwong.cardgame.R;
  * Created by tylerbwong on 3/23/16.
  */
 public class CardViewHolder extends RecyclerView.ViewHolder {
-   public ImageView suit;
-   public TextView rank;
-   public TextView smallRank;
+   public ImageView suitTop;
+   public ImageView suitMid;
+   public ImageView suitBot;
+   public TextView rankTop;
+   public TextView rankBot;
 
    public CardViewHolder(View itemView) {
       super(itemView);
 
-      suit = (ImageView) itemView.findViewById(R.id.suit);
-      rank = (TextView) itemView.findViewById(R.id.rank);
-      smallRank = (TextView) itemView.findViewById(R.id.small_rank);
+      suitTop = (ImageView) itemView.findViewById(R.id.suit_top);
+      suitMid = (ImageView) itemView.findViewById(R.id.suit_mid);
+      suitBot = (ImageView) itemView.findViewById(R.id.suit_bot);
+      rankTop = (TextView) itemView.findViewById(R.id.rank_top);
+      rankBot = (TextView) itemView.findViewById(R.id.rank_bot);
+
    }
 }

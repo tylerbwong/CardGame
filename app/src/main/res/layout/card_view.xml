@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="70dp"
-    android:layout_width="match_parent"
-    android:padding="@dimen/activity_vertical_margin">
-
-    <ImageView
-        android:id="@+id/suit"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <include layout="@layout/card_component"
+        android:id="@+id/card"
         android:layout_width="wrap_content"
-        android:src="@mipmap/heart" />
-
-    <TextView
-        android:id="@+id/small_rank"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@id/suit"
-        android:layout_width="wrap_content"
-        android:text="A"
-        android:textColor="@color/colorAccent"
-        android:textSize="36sp" />
-
-    <TextView
-        android:gravity="center_vertical"
-        android:id="@+id/rank"
-        android:layout_height="match_parent"
-        android:layout_marginStart="105dp"
-        android:layout_width="match_parent"
-        android:text="@string/queen_diamonds"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
-</RelativeLayout>
+        android:layout_height="wrap_content"/>
+</LinearLayout>
