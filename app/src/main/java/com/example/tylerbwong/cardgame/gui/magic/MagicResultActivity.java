@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.R;
-import com.example.tylerbwong.cardgame.gui.realmagic.RealMagicActivity;
 
 /**
  * Created by tylerbwong on 3/22/16.

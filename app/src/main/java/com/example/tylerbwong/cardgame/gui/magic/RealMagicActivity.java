@@ -1,4 +1,4 @@
-package com.example.tylerbwong.cardgame.gui.realmagic;
+package com.example.tylerbwong.cardgame.gui.magic;
 
 import android.content.Intent;
 import android.graphics.Typeface;

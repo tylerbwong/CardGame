@@ -25,13 +25,13 @@
         <activity android:name=".gui.magic.MagicResultActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".gui.realmagic.RealMagicActivity"
+        <activity android:name=".gui.magic.RealMagicActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".gui.realmagic.RealMagicNumberActivity"
+        <activity android:name=".gui.magic.RealMagicNumberActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".gui.realmagic.RealMagicPileActivity"
+        <activity android:name=".gui.magic.RealMagicPileActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
         <activity android:name=".gui.war.WarActivity"
