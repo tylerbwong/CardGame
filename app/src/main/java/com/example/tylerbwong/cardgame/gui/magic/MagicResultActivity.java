@@ -18,8 +18,11 @@ import com.example.tylerbwong.cardgame.R;
 public class MagicResultActivity extends AppCompatActivity {
    private int suitIdent;
    private String rankIdent;
-   private ImageView suit;
-   private TextView rank;
+   private ImageView suitTop;
+   private ImageView suitMid;
+   private ImageView suitBot;
+   private TextView rankTop;
+   private TextView rankBot;
    private TextView title;
    private Button backMenu;
    private Button again;
@@ -37,8 +40,12 @@ public class MagicResultActivity extends AppCompatActivity {
 
       Typeface gotham = Typeface.createFromAsset(getAssets(), "font/gotham-light.ttf");
 
-      suit = (ImageView) findViewById(R.id.suit);
-      rank = (TextView) findViewById(R.id.rank);
+      suitTop = (ImageView) findViewById(R.id.suit_top);
+      suitMid = (ImageView) findViewById(R.id.suit_mid);
+      suitBot = (ImageView) findViewById(R.id.suit_bot);
+
+      rankTop = (TextView) findViewById(R.id.rank_top);
+      rankBot = (TextView) findViewById(R.id.rank_bot);
       title = (TextView) findViewById(R.id.title_label);
       backMenu = (Button) findViewById(R.id.back_to_main);
       again = (Button) findViewById(R.id.again);
@@ -46,7 +53,8 @@ public class MagicResultActivity extends AppCompatActivity {
       title.setTypeface(gotham);
       backMenu.setTypeface(gotham);
       again.setTypeface(gotham);
-      rank.setTypeface(gotham);
+      rankTop.setTypeface(gotham);
+      rankBot.setTypeface(gotham);
 
       Intent startIntent = getIntent();
       suitIdent = startIntent.getIntExtra("suit", 1);
@@ -57,37 +65,50 @@ public class MagicResultActivity extends AppCompatActivity {
 
    private void showResult() {
       if (suitIdent == 0) {
-         suit.setImageResource(R.mipmap.spade);
+         suitTop.setImageResource(R.mipmap.spade);
+         suitMid.setImageResource(R.mipmap.spade);
+         suitBot.setImageResource(R.mipmap.spade);
       }
       else if (suitIdent == 1) {
-         suit.setImageResource(R.mipmap.heart);
+         suitTop.setImageResource(R.mipmap.heart);
+         suitMid.setImageResource(R.mipmap.heart);
+         suitBot.setImageResource(R.mipmap.heart);
       }
       else if (suitIdent == 2) {
-         suit.setImageResource(R.mipmap.club);
+         suitTop.setImageResource(R.mipmap.club);
+         suitMid.setImageResource(R.mipmap.club);
+         suitBot.setImageResource(R.mipmap.club);
       }
       else {
-         suit.setImageResource(R.mipmap.diamond);
+         suitTop.setImageResource(R.mipmap.diamond);
+         suitMid.setImageResource(R.mipmap.diamond);
+         suitBot.setImageResource(R.mipmap.diamond);
       }
 
       if (rankIdent.equals(ACE) || rankIdent.equals(JACK) || rankIdent.equals(QUEEN) ||
             rankIdent.equals(KING)) {
          switch(rankIdent) {
             case JACK:
-               rank.setText("J");
+               rankTop.setText("J");
+               rankBot.setText("J");
                break;
             case QUEEN:
-               rank.setText("Q");
+               rankTop.setText("Q");
+               rankBot.setText("Q");
                break;
             case KING:
-               rank.setText("K");
+               rankTop.setText("K");
+               rankBot.setText("K");
                break;
             default:
-               rank.setText("A");
+               rankTop.setText("A");
+               rankBot.setText("A");
                break;
          }
       }
       else {
-         rank.setText(rankIdent);
+         rankTop.setText(rankIdent);
+         rankBot.setText(rankIdent);
       }
    }
 
