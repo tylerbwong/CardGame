@@ -28,6 +28,7 @@ public class RealMagicActivity extends AppCompatActivity {
    private RecyclerView listCards;
    private MagicTrick trick;
    private Card[] trickDeck;
+   private boolean restart = false;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,18 @@ public class RealMagicActivity extends AppCompatActivity {
       nextButton = (Button) findViewById(R.id.next);
       listCards = (RecyclerView) findViewById(R.id.list_cards);
 
-      Deck deck = new Deck();
-      trick = new MagicTrick(deck);
+      Intent startIntent = getIntent();
+      restart = startIntent.getBooleanExtra("restart", false);
+
+      if (!restart) {
+         Deck deck = new Deck();
+         trick = new MagicTrick(deck);
+      }
+      else {
+         Bundle trickBundle = startIntent.getExtras();
+         trick = trickBundle.getParcelable("trick");
+      }
+
       trickDeck = trick.getTrickDeck();
 
       titleLabel.setTypeface(gotham);

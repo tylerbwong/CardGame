@@ -96,6 +96,8 @@ public class RealMagicNumberActivity extends AppCompatActivity implements OnItem
 
    public void backAction(View v) {
       Intent backIntent = new Intent(this, RealMagicActivity.class);
+      backIntent.putExtra("restart", true);
+      backIntent.putExtra("trick", trick);
       startActivity(backIntent);
    }
 
