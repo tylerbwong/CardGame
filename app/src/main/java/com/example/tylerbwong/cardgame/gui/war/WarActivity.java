@@ -110,7 +110,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
          }
       });
       LayoutInflater inflater = getLayoutInflater();
-      View alertLayout = inflater.inflate(R.layout.dialog_view, null);
+      View alertLayout = inflater.inflate(R.layout.war_dialog_view, null);
       alert.setView(alertLayout);
       AlertDialog dialog = alert.create();
       dialog.create();

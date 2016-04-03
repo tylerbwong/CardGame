@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
+import com.example.tylerbwong.cardgame.gui.blackjack.BlackActivity;
+import com.example.tylerbwong.cardgame.gui.crazyeight.CrazyActivity;
 import com.example.tylerbwong.cardgame.gui.magic.MagicActivity;
 import com.example.tylerbwong.cardgame.gui.magic.RealMagicActivity;
 import com.example.tylerbwong.cardgame.gui.war.WarActivity;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void crazyAction(View v) {
+      Intent crazyIntent = new Intent(this, CrazyActivity.class);
+      startActivity(crazyIntent);
    }
 
    /**
@@ -92,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
     * @param v
     */
    public void blackAction(View v) {
+      Intent blackIntent = new Intent(this, BlackActivity.class);
+      startActivity(blackIntent);
    }
 
    /**
