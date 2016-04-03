@@ -12,7 +12,7 @@ import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 import java.util.List;
 
 /**
- * Created by tylerbwong on 3/23/16.
+ * @author Tyler Wong
  */
 public class MySpinnerAdapter extends ArrayAdapter<String> {
 

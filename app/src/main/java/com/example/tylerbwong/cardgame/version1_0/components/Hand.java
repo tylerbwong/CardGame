@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+/**
+ * @author Tyler Wong
+ */
 public class Hand implements Parcelable {
    private ArrayList<Card> hand;
 

@@ -3,7 +3,12 @@ package com.example.tylerbwong.cardgame.version1_0.components;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class LQueue<T> implements Parcelable{
+
+/**
+ * @author Tyler Wong
+ * @param <T>
+ */
+public class LQueue<T> implements Parcelable {
    // LQueue instance variables
    private Node front;
    private Node end;

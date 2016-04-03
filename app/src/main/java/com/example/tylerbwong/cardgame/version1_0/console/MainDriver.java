@@ -7,6 +7,9 @@ import com.example.tylerbwong.cardgame.version1_0.components.LQueue.MyException;
 import com.example.tylerbwong.cardgame.version1_0.crazyeight.CrazyEight;
 import com.example.tylerbwong.cardgame.version1_0.war.War;
 
+/**
+ * @author Tyler Wong
+ */
 public class MainDriver {
    /*
     * Function: main

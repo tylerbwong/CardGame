@@ -3,7 +3,7 @@ package com.example.tylerbwong.cardgame.version1_0.war;
 import com.example.tylerbwong.cardgame.gui.war.WarActivity;
 
 /**
- * Created by tylerbwong on 3/25/16.
+ * @author Tyler Wong
  */
 public class WarController {
    private War war;

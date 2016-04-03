@@ -5,7 +5,10 @@ import android.os.Parcelable;
 
 import java.util.Random;
 
-public class Deck extends LQueue<Card> implements Parcelable{
+/**
+ * @author Tyler Wong
+ */
+public class Deck extends LQueue<Card> implements Parcelable {
 
    final static int MIN_CARD = 2;
    final static int MAX_CARD = 14;

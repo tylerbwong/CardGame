@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.Hashtable;
 
 /**
- * Created by tylerbwong on 3/28/16.
+ * @author Tyler Wong
  */
 public class Typefaces {
    private static final String TAG = "Typefaces";

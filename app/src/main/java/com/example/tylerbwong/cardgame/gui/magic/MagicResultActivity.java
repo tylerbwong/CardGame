@@ -14,7 +14,7 @@ import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
- * Created by tylerbwong on 3/22/16.
+ * @author Tyler Wong
  */
 public class MagicResultActivity extends AppCompatActivity {
    private int suitIdent;

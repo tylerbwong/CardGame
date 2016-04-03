@@ -4,6 +4,9 @@ import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 
+/**
+ * @author Tyler Wong
+ */
 public class BlackJack {
    private Deck deck;
    private Hand userHand;

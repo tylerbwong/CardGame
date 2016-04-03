@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.example.tylerbwong.cardgame.R;
 
 /**
- * Created by tylerbwong on 3/23/16.
+ * @author Tyler Wong
  */
 public class PileViewHolder extends RecyclerView.ViewHolder {
    public ImageView suit;

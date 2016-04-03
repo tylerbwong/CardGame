@@ -3,6 +3,9 @@ package com.example.tylerbwong.cardgame.version1_0.components;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * @author Tyler Wong
+ */
 public class Card implements Parcelable {
    private int num;
    private String suit;

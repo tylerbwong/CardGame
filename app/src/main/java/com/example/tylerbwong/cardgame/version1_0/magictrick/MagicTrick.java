@@ -7,9 +7,9 @@ import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 
 /**
- * Created by tylerbwong on 3/22/16.
+ * @author Tyler Wong
  */
-public class MagicTrick implements Parcelable{
+public class MagicTrick implements Parcelable {
    private Deck deck;
    private Card solution;
    private int choice;

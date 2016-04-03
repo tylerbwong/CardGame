@@ -6,6 +6,9 @@ import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 
 import java.util.*;
 
+/**
+ * @author Tyler Wong
+ */
 public class War extends Observable {
    private Deck deck;
    private Hand userHand;

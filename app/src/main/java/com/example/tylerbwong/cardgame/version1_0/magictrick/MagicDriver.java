@@ -6,7 +6,7 @@ import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import java.util.Scanner;
 
 /**
- * Created by tylerbwong on 3/22/16.
+ * @author Tyler Wong
  */
 public class MagicDriver {
    public static void printArray(Card[] array) {

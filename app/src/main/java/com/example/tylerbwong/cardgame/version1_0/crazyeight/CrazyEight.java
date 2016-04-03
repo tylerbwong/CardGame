@@ -5,6 +5,9 @@ import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 import com.example.tylerbwong.cardgame.version1_0.components.LQueue.MyException;
 
+/**
+ * @author Tyler Wong
+ */
 public class CrazyEight {
    final int GAME_ON = 2;
    final int CRAZY_8 = 8;

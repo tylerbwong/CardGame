@@ -14,6 +14,10 @@ import com.example.tylerbwong.cardgame.gui.magic.RealMagicActivity;
 import com.example.tylerbwong.cardgame.gui.war.WarActivity;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
+/**
+ * @author Tyler Wong
+ */
+
 public class MainActivity extends AppCompatActivity {
    private TextView titleLabel;
    private Button crazyEights;

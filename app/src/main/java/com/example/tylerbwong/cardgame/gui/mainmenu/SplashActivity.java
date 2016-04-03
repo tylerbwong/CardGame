@@ -14,7 +14,7 @@ import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
- * Created by brittanyberlanga on 3/21/16.
+ * @author Brittany Berlanga
  */
 public class SplashActivity extends AppCompatActivity {
    private static final int SPLASH_DISPLAY_LENGTH = 1000;

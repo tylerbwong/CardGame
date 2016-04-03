@@ -20,7 +20,7 @@ import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 import java.util.Arrays;
 
 /**
- * Created by tylerbwong on 3/21/16.
+ * @author Tyler Wong
  */
 public class MagicActivity extends AppCompatActivity implements OnItemSelectedListener {
    private TextView titleLabel;

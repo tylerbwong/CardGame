@@ -24,7 +24,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by tylerbwong on 3/24/16.
+ * @author Tyler Wong
  */
 public class WarActivity extends AppCompatActivity implements Observer {
    private TextView titleLabel;

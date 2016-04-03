@@ -19,7 +19,7 @@ import com.example.tylerbwong.cardgame.version1_0.magictrick.MagicTrick;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
 
 /**
- * Created by tylerbwong on 3/23/16.
+ * @author Tyler Wong
  */
 public class RealMagicActivity extends AppCompatActivity {
    private TextView titleLabel;

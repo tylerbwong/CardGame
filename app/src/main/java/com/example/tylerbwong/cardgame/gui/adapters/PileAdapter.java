@@ -11,6 +11,9 @@ import com.example.tylerbwong.cardgame.gui.viewholders.PileViewHolder;
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 
+/**
+ * @author Tyler Wong
+ */
 public class PileAdapter extends RecyclerView.Adapter<PileViewHolder> {
    private Card[] cards;
    private Typeface typeface;

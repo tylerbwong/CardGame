@@ -11,7 +11,9 @@ import com.example.tylerbwong.cardgame.gui.viewholders.CardViewHolder;
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 
-
+/**
+ * @author Tyler Wong
+ */
 public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    private Card[] cards;
    private Typeface typeface;
