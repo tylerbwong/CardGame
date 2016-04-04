@@ -14,12 +14,19 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
+import com.example.tylerbwong.cardgame.version1_0.crazyeight.CrazyController;
+import com.example.tylerbwong.cardgame.version1_0.crazyeight.CrazyEight;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author Tyler Wong
  */
-public class CrazyActivity extends AppCompatActivity {
+public class CrazyActivity extends AppCompatActivity implements Observer {
+
+   private CrazyController controller;
 
    Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
@@ -28,6 +35,8 @@ public class CrazyActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_black);
       setFullscreen();
+
+      controller = new CrazyController(new CrazyEight(), this);
 
       displayAlertDialog();
    }
@@ -87,5 +96,10 @@ public class CrazyActivity extends AppCompatActivity {
                   | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                   | View.SYSTEM_UI_FLAG_FULLSCREEN
                   | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+   }
+
+   @Override
+   public void update(Observable o, Object arg) {
+
    }
 }

@@ -5,10 +5,12 @@ import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 import com.example.tylerbwong.cardgame.version1_0.components.LQueue.MyException;
 
+import java.util.*;
+
 /**
  * @author Tyler Wong
  */
-public class CrazyEight {
+public class CrazyEight extends Observable {
    final int GAME_ON = 2;
    final int CRAZY_8 = 8;
 
@@ -19,13 +21,13 @@ public class CrazyEight {
 
    // constructor
    public CrazyEight() {
-      this.deck = new Deck();
+      deck = new Deck();
       for (int i = 0; i < 3; i++) {
-         this.deck.shuffle();
+         deck.shuffle();
       }
-      this.userHand = new Hand();
-      this.computerHand = new Hand();
-      this.cardInPlay = null;
+      userHand = new Hand();
+      computerHand = new Hand();
+      cardInPlay = null;
    }
 
    /*
@@ -38,10 +40,10 @@ public class CrazyEight {
    public void deal() {
       int numOfCards = 8;
       for (int i = 0; i < numOfCards; i++) {
-         this.userHand.draw(deck);
-         this.computerHand.draw(deck);
+         userHand.draw(deck);
+         computerHand.draw(deck);
       }
-      this.cardInPlay = deck.removeCard();
+      cardInPlay = deck.removeCard();
    }
 
    /*
@@ -51,7 +53,7 @@ public class CrazyEight {
     * Return: a Card data type
     */
    public Card userDraw() {
-      return this.userHand.draw(deck);
+      return userHand.draw(deck);
    }
 
    /*
@@ -63,26 +65,26 @@ public class CrazyEight {
    public void changeSuit(int option) {
       boolean done = false;
 
-      while (! done) {
+      while (!done) {
          try {
             switch (option) {
                case 1: {
-                  this.cardInPlay = new Card(CRAZY_8, "Spades");
+                  cardInPlay = new Card(CRAZY_8, "Spades");
                   done = true;
                   break;
                }
                case 2: {
-                  this.cardInPlay = new Card(CRAZY_8, "Hearts");
+                  cardInPlay = new Card(CRAZY_8, "Hearts");
                   done = true;
                   break;
                }
                case 3: {
-                  this.cardInPlay = new Card(CRAZY_8, "Diamonds");
+                  cardInPlay = new Card(CRAZY_8, "Diamonds");
                   done = true;
                   break;
                }
                case 4: {
-                  this.cardInPlay = new Card(CRAZY_8, "Clubs");
+                  cardInPlay = new Card(CRAZY_8, "Clubs");
                   done = true;
                   break;
                }
@@ -107,10 +109,11 @@ public class CrazyEight {
     */
    public boolean userTurn(int index) {
       if (index == - 1) {
-         this.cardInPlay = this.userHand.play(0);
+         cardInPlay = userHand.play(0);
          return true;
-      } else if (validTurn(this.userHand.getCard(index - 1)) && (index - 1) < this.userHand.getSize()) {
-         this.cardInPlay = this.userHand.play(index - 1);
+      }
+      else if (validTurn(userHand.getCard(index - 1)) && (index - 1) < userHand.getSize()) {
+         cardInPlay = userHand.play(index - 1);
          return true;
       }
       return false;
@@ -124,52 +127,52 @@ public class CrazyEight {
     * Return: N/A
     */
    public void computerTurn() {
-      int handSize = this.computerHand.getSize();
+      int handSize = computerHand.getSize();
       int handIndex = 0;
       boolean done = false;
       while (handIndex < handSize && ! done) {
-         if (validTurn(this.computerHand.getCard(handIndex)) &&
-               this.computerHand.getCard(handIndex).getNum() != CRAZY_8) {
+         if (validTurn(computerHand.getCard(handIndex)) &&
+               computerHand.getCard(handIndex).getNum() != CRAZY_8) {
             done = true;
-            this.cardInPlay = this.computerHand.play(handIndex);
+            cardInPlay = computerHand.play(handIndex);
             System.out.println("___________________________________");
             System.out.println("");
             System.out.println("The computer has played a card.");
-            System.out.println("The computer now has " + this.computerHand.getSize() + " cards.");
+            System.out.println("The computer now has " + computerHand.getSize() + " cards.");
             System.out.println("___________________________________");
             System.out.println("");
          }
          handIndex++;
       }
       handIndex = 0;
-      while (handIndex < handSize && ! done) {
-         if (this.computerHand.getCard(handIndex).getNum() == CRAZY_8) {
+      while (handIndex < handSize && !done) {
+         if (computerHand.getCard(handIndex).getNum() == CRAZY_8) {
             done = true;
-            this.cardInPlay = this.computerHand.play(handIndex);
+            cardInPlay = computerHand.play(handIndex);
             computerCrazy8();
             System.out.println("___________________________________");
             System.out.println("");
             System.out.println("The computer has played a card.");
-            System.out.println("The computer now has " + this.computerHand.getSize() + " cards.");
+            System.out.println("The computer now has " + computerHand.getSize() + " cards.");
             System.out.println("___________________________________");
             System.out.println("");
          }
          handIndex++;
       }
-      while (! done) {
+      while (!done) {
          try {
-            this.computerHand.draw(deck);
+            computerHand.draw(deck);
             System.out.println("The computer drew a card!");
-            if (validTurn(this.computerHand.getCard(this.computerHand.getSize() - 1))) {
-               this.cardInPlay = this.computerHand.play(this.computerHand.getSize() - 1);
+            if (validTurn(computerHand.getCard(computerHand.getSize() - 1))) {
+               cardInPlay = computerHand.play(computerHand.getSize() - 1);
                done = true;
-               if (this.cardInPlay.getNum() == CRAZY_8) {
+               if (cardInPlay.getNum() == CRAZY_8) {
                   computerCrazy8();
                }
                System.out.println("___________________________________");
                System.out.println("");
                System.out.println("The computer has played a card.");
-               System.out.println("The computer now has " + this.computerHand.getSize() + " cards.");
+               System.out.println("The computer now has " + computerHand.getSize() + " cards.");
                System.out.println("___________________________________");
                System.out.println("");
             }
@@ -188,11 +191,11 @@ public class CrazyEight {
     * Return: N/A
     */
    private void computerCrazy8() {
-      if (this.computerHand.getSize() > 0) {
+      if (computerHand.getSize() > 0) {
          // 0: spades, 1: hearts, 2: clubs, 3: diamonds
          int[] suitCount = new int[4];
-         for (int i = 0; i < this.computerHand.getSize(); i++) {
-            switch (this.computerHand.getCard(i).getSuit()) {
+         for (int i = 0; i < computerHand.getSize(); i++) {
+            switch (computerHand.getCard(i).getSuit()) {
                case "Spades": {
                   suitCount[0]++;
                   break;
@@ -244,11 +247,12 @@ public class CrazyEight {
                break;
             }
          }
-         this.cardInPlay = new Card(CRAZY_8, suit);
-      } else {
-         this.cardInPlay = new Card(CRAZY_8, "Spades");
+         cardInPlay = new Card(CRAZY_8, suit);
       }
-      System.out.println("The computer changed the suit to: " + this.cardInPlay.getSuit());
+      else {
+         cardInPlay = new Card(CRAZY_8, "Spades");
+      }
+      System.out.println("The computer changed the suit to: " + cardInPlay.getSuit());
    }
 
    /*
@@ -258,7 +262,7 @@ public class CrazyEight {
     * Return: N/A
     */
    private boolean validTurn(Card c) {
-      return (c.getNum() == this.cardInPlay.getNum() || c.getSuit().equals(this.cardInPlay.getSuit())
+      return (c.getNum() == cardInPlay.getNum() || c.getSuit().equals(cardInPlay.getSuit())
             || c.getNum() == 8);
    }
 
@@ -269,15 +273,15 @@ public class CrazyEight {
     * Return: primitive boolean type
     */
    public int gameOver() {
-      if (this.deck.isEmpty()) {
+      if (deck.isEmpty()) {
          System.out.println("___________________________________");
          System.out.println("");
          System.out.println("No more cards in the deck.");
          System.out.println("Game Over! It's a draw!");
          System.out.println("___________________________________");
          System.out.println("");
-         return - 1;
-      } else if (this.computerHand.getSize() == 0) {
+         return -1;
+      } else if (computerHand.getSize() == 0) {
          System.out.println("___________________________________");
          System.out.println("");
          System.out.println("The computer ran out of cards.");
@@ -285,7 +289,7 @@ public class CrazyEight {
          System.out.println("___________________________________");
          System.out.println("");
          return 0;
-      } else if (this.userHand.getSize() == 0) {
+      } else if (userHand.getSize() == 0) {
          System.out.println("___________________________________");
          System.out.println("");
          System.out.println("You ran out of cards!");
@@ -304,7 +308,7 @@ public class CrazyEight {
     * Return: object of type Hand
     */
    public Hand getUserHand() {
-      return this.userHand;
+      return userHand;
    }
 
    /*
@@ -314,7 +318,7 @@ public class CrazyEight {
     * Return: object of type Hand
     */
    public Hand getComputerHand() {
-      return this.computerHand;
+      return computerHand;
    }
 
    /*
@@ -324,7 +328,7 @@ public class CrazyEight {
     * Return: object of type Hand
     */
    public Card getCardInPlay() {
-      return this.cardInPlay;
+      return cardInPlay;
    }
 
    /*
@@ -334,8 +338,8 @@ public class CrazyEight {
     * Return: N/A
     */
    public void printUserHand() {
-      for (int i = 0; i < this.userHand.getSize(); i++) {
-         Card play = this.userHand.getCard(i);
+      for (int i = 0; i < userHand.getSize(); i++) {
+         Card play = userHand.getCard(i);
          System.out.println((i + 1) + " - " + play.toString());
       }
    }
@@ -347,6 +351,6 @@ public class CrazyEight {
     * Return: a deck data type
     */
    public Deck getDeck() {
-      return this.deck;
+      return deck;
    }
 }
