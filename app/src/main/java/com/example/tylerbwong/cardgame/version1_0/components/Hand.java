@@ -8,20 +8,18 @@ import java.util.ArrayList;
 /**
  * @author Tyler Wong
  */
-public class Hand implements Parcelable {
-   private ArrayList<Card> hand;
+public class Hand extends ArrayList<Card> implements Parcelable {
 
    // default hand constructor
    public Hand() {
-      hand = new ArrayList<>();
+      super();
    }
 
    // hand constructor
    public Hand(Deck d, int num) {
-      hand = new ArrayList<>();
-
+      super();
       for (int i = 0; i < num; i++) {
-         hand.add(i, d.removeCard());
+         super.add(i, d.removeCard());
       }
    }
 
@@ -33,7 +31,7 @@ public class Hand implements Parcelable {
     */
    public Card draw(Deck d) {
       Card ret = d.removeCard();
-      hand.add(ret);
+      super.add(ret);
       return ret;
    }
 
@@ -47,8 +45,8 @@ public class Hand implements Parcelable {
       if (c == - 1) {
          c = 0;
       }
-      Card ret = hand.remove(c);
-      hand.trimToSize();
+      Card ret = super.remove(c);
+      super.trimToSize();
       return ret;
    }
 
@@ -59,7 +57,7 @@ public class Hand implements Parcelable {
     * Return: a type Card
     */
    public Card getCard(int index) {
-      return hand.get(index);
+      return super.get(index);
    }
 
    /*
@@ -69,7 +67,7 @@ public class Hand implements Parcelable {
     * Return: a primitive int
     */
    public int getSize() {
-      return hand.size();
+      return super.size();
    }
 
    /*
@@ -79,15 +77,13 @@ public class Hand implements Parcelable {
     * Return: N/A
     */
    public void addCard(Card c) {
-      hand.add(c);
+      super.add(c);
    }
 
    protected Hand(Parcel in) {
+      super();
       if (in.readByte() == 0x01) {
-         hand = new ArrayList<Card>();
-         in.readList(hand, Card.class.getClassLoader());
-      } else {
-         hand = null;
+         in.readList(this, Card.class.getClassLoader());
       }
    }
 
@@ -98,12 +94,8 @@ public class Hand implements Parcelable {
 
    @Override
    public void writeToParcel(Parcel dest, int flags) {
-      if (hand == null) {
-         dest.writeByte((byte) (0x00));
-      } else {
-         dest.writeByte((byte) (0x01));
-         dest.writeList(hand);
-      }
+      dest.writeByte((byte) (0x01));
+      dest.writeList(this);
    }
 
    @SuppressWarnings("unused")
