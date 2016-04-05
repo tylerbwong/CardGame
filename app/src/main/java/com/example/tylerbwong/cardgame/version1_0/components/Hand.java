@@ -18,6 +18,8 @@ public class Hand implements Parcelable {
 
    // hand constructor
    public Hand(Deck d, int num) {
+      hand = new ArrayList<>();
+
       for (int i = 0; i < num; i++) {
          hand.add(i, d.removeCard());
       }

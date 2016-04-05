@@ -1,14 +1,10 @@
 package com.example.tylerbwong.cardgame.gui.war;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -87,43 +83,7 @@ public class WarActivity extends AppCompatActivity implements Observer {
 
       controller = new WarController(new War(), this);
 
-      displayAlertDialog();
-   }
-
-   public void displayAlertDialog() {
-      AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-      alert.setCancelable(false);
-      alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-         @Override
-         public void onClick(DialogInterface dialog, int which) {
-            goBack();
-         }
-      });
-
-      alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-         @Override
-         public void onClick(DialogInterface dialog, int which) {
-            dialog.cancel();
-         }
-      });
-      LayoutInflater inflater = getLayoutInflater();
-      View alertLayout = inflater.inflate(R.layout.war_dialog_view, null);
-      alert.setView(alertLayout);
-      AlertDialog dialog = alert.create();
-      dialog.create();
-
-      Button noButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
-      noButton.setTypeface(gotham);
-      Button yesButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
-      yesButton.setTypeface(gotham);
-      TextView titleLabel = (TextView) alertLayout.findViewById(R.id.title_label);
-
-      titleLabel.setTypeface(gotham);
-
-      dialog.show();
+      controller.displayAlertDialog(gotham);
    }
 
    public void goBack() {

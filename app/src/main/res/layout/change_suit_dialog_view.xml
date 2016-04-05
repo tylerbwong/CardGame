@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="@string/change_suit"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="50dp">
+
+        <ImageButton
+            android:id="@+id/spade_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:src="@mipmap/spade"
+            android:onClick="suitClicked"
+            android:stateListAnimator="@anim/button_animator"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+        <ImageButton
+            android:id="@+id/heart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:src="@mipmap/heart"
+            android:stateListAnimator="@anim/button_animator"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+        <ImageButton
+            android:id="@+id/club_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:src="@mipmap/club"
+            android:stateListAnimator="@anim/button_animator"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+        <ImageButton
+            android:id="@+id/diamond_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:src="@mipmap/diamond"
+            android:stateListAnimator="@anim/button_animator"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+    </LinearLayout>
+</RelativeLayout>

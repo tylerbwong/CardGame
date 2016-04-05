@@ -441,8 +441,8 @@ public class MainDriver {
       System.out.println("");
       System.out.println("1 - Spades");
       System.out.println("2 - Hearts");
-      System.out.println("3 - Diamonds");
-      System.out.println("4 - Clubs");
+      System.out.println("3 - ClubsDiamonds");
+      System.out.println("4 - Diamonds");
       System.out.println("___________________________________");
       System.out.println("");
    }

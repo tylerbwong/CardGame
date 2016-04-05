@@ -4,10 +4,12 @@ import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.components.Deck;
 import com.example.tylerbwong.cardgame.version1_0.components.Hand;
 
+import java.util.Observable;
+
 /**
  * @author Tyler Wong
  */
-public class BlackJack {
+public class BlackJack extends Observable {
    private Deck deck;
    private Hand userHand;
    private Hand computerHand;

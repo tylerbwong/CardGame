@@ -14,12 +14,19 @@ import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
+import com.example.tylerbwong.cardgame.version1_0.blackjack.BlackController;
+import com.example.tylerbwong.cardgame.version1_0.blackjack.BlackJack;
 import com.example.tylerbwong.cardgame.version1_0.util.Typefaces;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author Tyler Wong
  */
-public class BlackActivity extends AppCompatActivity {
+public class BlackActivity extends AppCompatActivity implements Observer {
+
+   private BlackController controller;
 
    Typeface gotham = Typefaces.get(this, "font/gotham-light.ttf");
 
@@ -29,43 +36,12 @@ public class BlackActivity extends AppCompatActivity {
       setContentView(R.layout.activity_black);
       setFullscreen();
 
-      displayAlertDialog();
+      controller = new BlackController(new BlackJack(), this);
+
+      controller.displayAlertDialog(gotham);
    }
 
-   public void displayAlertDialog() {
-      AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-      alert.setCancelable(false);
-      alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-         @Override
-         public void onClick(DialogInterface dialog, int which) {
-            goBack();
-         }
-      });
-
-      alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-         @Override
-         public void onClick(DialogInterface dialog, int which) {
-            dialog.cancel();
-         }
-      });
-      LayoutInflater inflater = getLayoutInflater();
-      View alertLayout = inflater.inflate(R.layout.black_dialog_view, null);
-      alert.setView(alertLayout);
-      AlertDialog dialog = alert.create();
-      dialog.create();
-
-      Button noButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
-      noButton.setTypeface(gotham);
-      Button yesButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
-      yesButton.setTypeface(gotham);
-      TextView titleLabel = (TextView) alertLayout.findViewById(R.id.title_label);
-      titleLabel.setTypeface(gotham);
-
-      dialog.show();
-   }
 
    public void goBack() {
       Intent mainIntent = new Intent(this, MainActivity.class);
@@ -87,5 +63,10 @@ public class BlackActivity extends AppCompatActivity {
                   | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                   | View.SYSTEM_UI_FLAG_FULLSCREEN
                   | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+   }
+
+   @Override
+   public void update(Observable observable, Object o) {
+
    }
 }

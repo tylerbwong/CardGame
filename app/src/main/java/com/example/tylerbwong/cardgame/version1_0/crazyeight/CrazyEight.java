@@ -22,9 +22,11 @@ public class CrazyEight extends Observable {
    // constructor
    public CrazyEight() {
       deck = new Deck();
+
       for (int i = 0; i < 3; i++) {
          deck.shuffle();
       }
+
       userHand = new Hand();
       computerHand = new Hand();
       cardInPlay = null;
@@ -68,33 +70,29 @@ public class CrazyEight extends Observable {
       while (!done) {
          try {
             switch (option) {
-               case 1: {
+               case 1:
                   cardInPlay = new Card(CRAZY_8, "Spades");
                   done = true;
                   break;
-               }
-               case 2: {
+               case 2:
                   cardInPlay = new Card(CRAZY_8, "Hearts");
                   done = true;
                   break;
-               }
-               case 3: {
-                  cardInPlay = new Card(CRAZY_8, "Diamonds");
-                  done = true;
-                  break;
-               }
-               case 4: {
+               case 3:
                   cardInPlay = new Card(CRAZY_8, "Clubs");
                   done = true;
                   break;
-               }
-               default: {
+               case 4:
+                  cardInPlay = new Card(CRAZY_8, "Diamonds");
+                  done = true;
+                  break;
+               default:
                   System.out.println("Invalid input.");
                   done = false;
                   break;
-               }
             }
-         } catch (Exception e) {
+         }
+         catch (Exception e) {
             System.out.println("Invalid input.");
             continue;
          }
@@ -108,7 +106,7 @@ public class CrazyEight extends Observable {
     * Return: N/A
     */
    public boolean userTurn(int index) {
-      if (index == - 1) {
+      if (index == -1) {
          cardInPlay = userHand.play(0);
          return true;
       }
@@ -273,6 +271,8 @@ public class CrazyEight extends Observable {
     * Return: primitive boolean type
     */
    public int gameOver() {
+      int gameOver = GAME_ON;
+
       if (deck.isEmpty()) {
          System.out.println("___________________________________");
          System.out.println("");
@@ -280,25 +280,27 @@ public class CrazyEight extends Observable {
          System.out.println("Game Over! It's a draw!");
          System.out.println("___________________________________");
          System.out.println("");
-         return -1;
-      } else if (computerHand.getSize() == 0) {
+         gameOver = -1;
+      }
+      else if (computerHand.getSize() == 0) {
          System.out.println("___________________________________");
          System.out.println("");
          System.out.println("The computer ran out of cards.");
          System.out.println("Game Over! You lose. :(");
          System.out.println("___________________________________");
          System.out.println("");
-         return 0;
-      } else if (userHand.getSize() == 0) {
+         gameOver = 0;
+      }
+      else if (userHand.getSize() == 0) {
          System.out.println("___________________________________");
          System.out.println("");
          System.out.println("You ran out of cards!");
          System.out.println("Game Over! You win! :)");
          System.out.println("___________________________________");
          System.out.println("");
-         return 1;
+         gameOver = 1;
       }
-      return GAME_ON;
+      return gameOver;
    }
 
    /*
