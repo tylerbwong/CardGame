@@ -33,7 +33,7 @@ public class CrazyActivity extends AppCompatActivity implements Observer {
       controller = new CrazyController(new CrazyEight(), this);
       controller.deal();
 
-      controller.displayChangeSuitDialog(gotham);
+      controller.displayAlertDialog(gotham);
    }
 
    public void goBack() {
