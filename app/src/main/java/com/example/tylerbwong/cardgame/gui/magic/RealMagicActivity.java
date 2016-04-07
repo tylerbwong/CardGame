@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
-import com.example.tylerbwong.cardgame.gui.adapters.CardAdapter;
+import com.example.tylerbwong.cardgame.gui.adapters.MagicCardAdapter;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.components.Deck;
@@ -71,7 +71,7 @@ public class RealMagicActivity extends AppCompatActivity {
       LinearLayoutManager llm = new LinearLayoutManager(this);
       llm.setOrientation(LinearLayoutManager.HORIZONTAL);
       listCards.setLayoutManager(llm);
-      CardAdapter cardAdapter = new CardAdapter(trickDeck, gotham);
+      MagicCardAdapter cardAdapter = new MagicCardAdapter(trickDeck, gotham);
       listCards.setAdapter(cardAdapter);
    }
 

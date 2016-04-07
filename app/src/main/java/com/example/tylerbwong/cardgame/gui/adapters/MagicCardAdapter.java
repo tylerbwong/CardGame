@@ -14,7 +14,7 @@ import com.example.tylerbwong.cardgame.version1_0.components.Card;
 /**
  * @author Tyler Wong
  */
-public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
+public class MagicCardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    private Card[] cards;
    private Typeface typeface;
    public static SparseArray<Integer> suitMap;
@@ -29,7 +29,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    }
 
    // Provide a suitable constructor (depends on the kind of dataset)
-   public CardAdapter(Card[] cards, Typeface typeface) {
+   public MagicCardAdapter(Card[] cards, Typeface typeface) {
       this.cards = cards;
       this.typeface = typeface;
    }

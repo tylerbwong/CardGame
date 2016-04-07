@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.tylerbwong.cardgame.R;
-import com.example.tylerbwong.cardgame.gui.adapters.CardAdapter;
+import com.example.tylerbwong.cardgame.gui.adapters.CrazyCardAdapter;
 import com.example.tylerbwong.cardgame.gui.mainmenu.MainActivity;
 import com.example.tylerbwong.cardgame.version1_0.components.Card;
 import com.example.tylerbwong.cardgame.version1_0.crazyeight.CrazyController;
@@ -53,7 +53,7 @@ public class CrazyActivity extends AppCompatActivity implements Observer {
       llm.setOrientation(LinearLayoutManager.HORIZONTAL);
       playerHand.setLayoutManager(llm);
       Card[] handArray = new Card[controller.getUserHand().getSize()];
-      CardAdapter cardAdapter = new CardAdapter(controller.getUserHand().toArray(handArray), gotham);
+      CrazyCardAdapter cardAdapter = new CrazyCardAdapter(controller.getUserHand().toArray(handArray), gotham);
       playerHand.setAdapter(cardAdapter);
 
    }
