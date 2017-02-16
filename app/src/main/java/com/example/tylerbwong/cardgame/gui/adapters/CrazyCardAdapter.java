@@ -34,6 +34,10 @@ public class CrazyCardAdapter extends RecyclerView.Adapter<CardViewHolder> {
       this.typeface = typeface;
    }
 
+   public Card[] getCards() {
+      return cards;
+   }
+
    // Create new views (invoked by the layout manager)
    @Override
    public CardViewHolder onCreateViewHolder(ViewGroup parent,
@@ -88,6 +92,12 @@ public class CrazyCardAdapter extends RecyclerView.Adapter<CardViewHolder> {
    @Override
    public int getItemCount() {
       return cards.length;
+   }
+
+   public void changeCards(Card[] newCards)
+   {
+      cards = newCards;
+      notifyDataSetChanged();
    }
 
    @Override

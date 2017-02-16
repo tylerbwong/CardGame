@@ -91,6 +91,32 @@ public class Card implements Parcelable {
       return face + " of " + suit;
    }
 
+   public String convertNum()
+   {
+      String result = "";
+      if (num >= 11 && num <= 14) {
+         switch (num) {
+            case 11:
+               result = "J";
+               break;
+            case 12:
+               result = "Q";
+               break;
+            case 13:
+               result = "K";
+               break;
+            default:
+               result = "A";
+               break;
+         }
+      }
+      else {
+         result = num + "";
+      }
+
+      return result;
+   }
+
    protected Card(Parcel in) {
       num = in.readInt();
       suit = in.readString();
